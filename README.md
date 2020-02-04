@@ -5,6 +5,7 @@ According to our research, people are spending an increasing amount of hours dai
 We would like to mainly focus on people’s confusion and interest about their online identity. We want to help them regain accurate self-cognition and evaluate the difference or misunderstanding between the actual impression and the identification they believed about themselves on their social media platforms by conducting data analysis and data visualization.
 
 Reference
+
 [1] Demographics of Social Media Users and Adoption in the United States. (n.d.). Retrieved from https://www.pewresearch.org/internet/fact-sheet/social-media/
 
 [2] The rise of social media. (n.d.). Retrieved from https://ourworldindata.org/rise-of-social-media
