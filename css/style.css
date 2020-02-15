@@ -281,7 +281,22 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     font-weight:300;
     color: rgba(0, 14, 53, 0.63);
     opacity: .8;
+    transform: translateY(5vh);
+    transition: opacity .3s ease-out .2s, transform .5s ease-in .2s;
+    will-change: opacity, transform;
 }
+
+.project-section p.revealOnScroll {
+    opacity: 0;
+
+}
+
+
+.project-section p.revealOnScroll.revealed {
+    opacity: 0.8; 
+    transform: translateY(0);
+}
+
 
 
 .project-section h2 {
@@ -349,12 +364,21 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     display: inline-block;
     width: 80%;
     margin: -90vh 0vw 5vh 35vw;
-    opacity: 0.2;
+    opacity: 0;
+    transform: translateX(10vw);
+    transition: opacity 2s ease-out 0s , transform 2s ease-in 0.2s;
+    will-change: opacity, transform;
 }
 
 .supporting-img:nth-of-type(2) img {
     margin: 5vh 0vw -15vh -10vw;
 }
+
+.supporting-img.revealed img {
+    opacity: 0.2;
+    transform: translateX(0);
+}
+
 
 #our-project {
     padding: 17vh 35vw 30vh 15vw;
