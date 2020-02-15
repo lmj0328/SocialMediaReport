@@ -366,7 +366,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     margin: -90vh 0vw 5vh 35vw;
     opacity: 0;
     transform: translateX(10vw);
-    transition: opacity 2s ease-out 0s , transform 2s ease-in 0.2s;
+    transition: opacity .7s ease-out 0s , transform .5s ease-in 0.2s;
     will-change: opacity, transform;
 }
 
