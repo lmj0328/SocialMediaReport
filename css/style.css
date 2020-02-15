@@ -270,7 +270,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     HOME PAGE - Our Project
 --------------------------------------------------------------*/
 .project-section {
-    padding: 17vh 35vw 20vh 15vw;
+    padding: 17vh 35vw 15vh 15vw;
     background-color: rgba(219, 183, 198, 0.116);
 }
 
@@ -297,13 +297,14 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     padding: 0;
     display: flex;
     flex-wrap: wrap;
+    margin: 0vh -5vw 0vh 0vw;
 }
 
 .project-section li {
     font-size: 1.1rem;
     font-weight: 300;
-    margin: 1vh 0.7vw;
-    background: rgb(255, 252, 249);
+    margin: 1vh 1vw 2vh 0vw;
+    background-color: rgba(240, 202, 217, 0.116);
     padding: 5vh 2vw;
     border-radius: 5px;
     color: rgba(0, 14, 53, 0.63);
@@ -315,10 +316,14 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     align-content: space-between;
 }
 
+.project-section li:nth-of-type(2n) {
+    margin: 1vh 0vw 2vh 1vw;
+}
+
 
 .project-section li h3 {
     color: rgb(0, 10, 29);
-
+    font-size: 1.6rem;
     margin: 0vh 0vw 1vh 0vw;
 }
 
@@ -340,6 +345,21 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 
 }
 
+.supporting-img img {
+    display: inline-block;
+    width: 80%;
+    margin: -90vh 0vw 5vh 35vw;
+    opacity: 0.2;
+}
+
+.supporting-img:nth-of-type(2) img {
+    margin: 5vh 0vw -15vh -10vw;
+}
+
+#our-project {
+    padding: 17vh 35vw 30vh 15vw;
+
+}
 
 #meet-our-team.project-section, #contact-us {
     padding: 17vh 15vw 18vh 15vw;
