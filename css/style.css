@@ -1,0 +1,371 @@
+/* Brand Design Color */
+html { 
+    font-size: 16px; 
+    scroll-behavior: smooth;
+
+}
+
+.font-light {
+    color: #F6F4F1;
+}
+.font-dark {
+    color: #11365C;
+}
+
+.background-light {
+    background-color: #F6F4F1;
+}
+.background-dark {
+    background-color: #11365C;
+}
+
+
+/* General */
+a, p, span, li {
+    color: #F6F4F1;
+    font-size: 1rem;
+    font-family: 'Mukta Vaani', sans-serif;
+}
+
+h1 {    
+    font-family: 'Mukta Vaani', sans-serif;
+    font-weight: 400;
+}
+
+h2 {    
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+}
+
+h3 {    
+    font-family: 'Mukta Vaani', sans-serif;
+    font-weight: 500;
+}
+
+/*--------------------------------------------------------------
+   NAVIGATION BAR
+--------------------------------------------------------------*/
+
+/* Navigation Bar -- top */
+#navigation-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#navigation-bar nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 12vh;
+    z-index: 1030;
+    padding-top: 30px;
+}
+
+#navigation-bar header {
+    padding: 0;
+}
+
+#navigation-bar .navbar-brand span {
+    padding-left: 50px;
+    padding-right: 30px;
+    margin-top: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    color: #F7F5F5;
+    text-shadow: 0.5px 0.5px #647B5E;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+}
+
+#navigation-bar ul.navbar-nav  {
+    margin-right: 2vw;
+}
+
+
+#navigation-bar .navbar-nav li {
+    padding: 0 10px 0px 10px;
+}
+
+#navigation-bar .navbar-nav li.active {
+    font-weight: 300;
+    color: rgb(9, 30, 51);
+}
+
+
+#navigation-bar .navbar-nav li a {
+    color: #F7F5F5;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    text-shadow: 0.5px 0.5px #647B5E;
+    font-size: 1rem;
+}
+
+#navigation-bar .navbar-nav li a:hover {
+    font-weight: 300;
+    color: #F7F5F5!important;
+    padding-bottom: 1vh;
+}
+
+#navigation-bar .navbar-nav i {
+    color: #F7F5F5!important;
+}
+
+/* Navigation Bar -- scrolled */
+#navigation-bar nav.scrolled {
+    color: black;
+    background-color: #F7F5F5;
+    box-shadow: 0.2px 0.2px 0.2px 0.2px lightgrey;
+}
+
+#navigation-bar .navbar-brand span.scrolled {
+    color: black;
+    text-shadow: 0.5px 0.5px #F7F5F5;
+}
+
+#navigation-bar .navbar-nav li a.scrolled {
+    color: black;
+    text-shadow: 0.5px 0.5px #F7F5F5;
+}
+
+#navigation-bar .navbar-nav li a.scrolled:hover {
+    font-size: 1rem;
+    color: rgb(3, 9, 15)!important;
+    padding-bottom:1vh;
+}
+
+#navigation-bar .navbar-nav i.scrolled {
+    color: #11365C!important;
+}
+
+/* Nav Link Animation*/
+div.borderXwidth a:before, div.borderXwidth a:after
+{
+    position: absolute;
+    opacity: 0;
+    width: 0%;
+    height: 2px;
+    content: '';
+    background: #FFF;
+    transition: all 0.3s;
+}
+
+div.borderXwidth a:before
+{
+    left: 0px;
+    top: 0px;
+}
+
+div.borderXwidth a:after
+{
+    right: 0px;
+    bottom: 0px;
+}
+
+div.borderXwidth a:hover:before, div.borderXwidth a:hover:after
+{
+    opacity: 1;
+    width: 100%;
+}
+
+/* Nav Link Animation*/
+div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
+{
+    background: #11365C;
+}
+
+
+/*--------------------------------------------------------------
+	HOME PAGE
+--------------------------------------------------------------*/
+
+/* home */
+
+#home-page .home-section {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100vw;
+    z-index: 0;
+    background-size: cover;
+    height: 100vh; 
+}
+
+
+.title-size-1 {
+    font-weight: 400;
+    letter-spacing: 4px;
+    font-size: 15px;
+    font-family: 'Athiti', sans-serif;
+    text-shadow: 0.5px 1px #647B5E;
+}
+
+.title-size-2 {
+    font-weight: 400;
+    font-size: 35px;
+    font-family: 'Nunito', sans-serif;
+    text-shadow: 0.5px 1px #647B5E;
+}
+
+
+.title-caption {
+    position: relative;
+    display: table;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 5vh;
+}
+
+
+#home-screen a button {
+    display: inline-block;
+    margin: 5vh 1vw;
+    width: 18vw;
+    height: 7vh;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 0px 3px 13px -6px rgb(41, 27, 5);
+    color: #F6F4F1;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    background-color: rgba(112, 133, 145, 0.5);
+
+    /* background-color: rgba(134, 111, 111, 0.5); */
+    outline: none;
+    transition: background-color 0.5s ease;
+}
+
+#home-screen a:nth-of-type(2) button {
+    background-color: rgba(112, 133, 145, 0.5);
+}
+
+#home-screen a button:hover {
+    /* background-color: rgba(184, 233, 206, 0.76); */
+    background-color: rgba(91, 178, 218, 0.514);
+}
+
+#home-screen a button:active { 
+    border-style: outset;
+}
+
+.caption-content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#footer {
+    color: #F6F4F1;
+    text-align: center;
+    background-color: rgb(33, 37, 41);
+    padding: 2vh 0vw;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+}
+
+
+/*--------------------------------------------------------------
+    HOME PAGE - Our Project
+--------------------------------------------------------------*/
+.project-section {
+    padding: 17vh 35vw 20vh 15vw;
+    background-color: rgba(219, 183, 198, 0.116);
+}
+
+
+.project-section p {
+    font-size: 1.3rem;
+    font-family: 'Mukta Vaani', sans-serif;
+    font-weight:300;
+    color: rgba(0, 14, 53, 0.63);
+    opacity: .8;
+}
+
+
+.project-section h2 {
+    font-size: 2rem;
+    color: rgb(0, 10, 29);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500; 
+    margin: 2vh 0vw 4vh 0vw;
+    text-align: left;
+}
+
+.project-section ul {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.project-section li {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin: 1vh 0.7vw;
+    background: rgb(255, 252, 249);
+    padding: 5vh 2vw;
+    border-radius: 5px;
+    color: rgba(0, 14, 53, 0.63);
+
+    flex-basis: 45%;
+    display: block;
+    flex-grow: 0;
+    align-items: stretch;
+    align-content: space-between;
+}
+
+
+.project-section li h3 {
+    color: rgb(0, 10, 29);
+
+    margin: 0vh 0vw 1vh 0vw;
+}
+
+
+.project-section li h4 {
+    color: rgba(0, 14, 53, 0.76);
+
+
+    font-size: 1.1rem;
+    margin: 0vh 0vw 3vh 0vw;
+}
+
+.project-section li img {
+    display: block;
+    max-width: 100%;
+    border-radius: 5px;
+    margin: 0vh 0vw 3vh 0vw;
+    opacity: 1;
+
+}
+
+
+#meet-our-team.project-section, #contact-us {
+    padding: 17vh 15vw 18vh 15vw;
+
+}
+
+
+#sponsorship-and-credit.project-section {
+    padding: 5vh 15vw 5vh 15vw;
+
+}
+
+#sponsorship-and-credit.project-section a {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: rgba(1, 37, 136, 0.76);
+}
+
+
+
+
+
+
+
+  
+
+
+
+ 
