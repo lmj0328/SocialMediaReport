@@ -22,7 +22,7 @@ html {
 
 /* General */
 a, p, span, li {
-    color: #F6F4F1;
+    color: black;
     font-size: 1rem;
     font-family: 'Mukta Vaani', sans-serif;
 }
@@ -371,7 +371,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     font-family: "Nunito", sans-serif;
     font-style: normal;
     font-weight: 200;
-    font-size: 22px;
+    font-size: 1.4rem;
     line-height: 30px;
     color: #1F1F1F;
     width: 48.2vw;
@@ -415,13 +415,12 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     padding: 4vh 0vw 0vh 9.6vw;
 }
 
-
 #why-mirror .reason:nth-of-type(2) {
     padding: 20vh 0vw 0vh 50.7vw;
 }
 
 #why-mirror .reason:nth-of-type(3) {
-    padding: 40vh 0vw 0vh 38.6vw;
+    padding: 32vh 0vw 0vh 33.6vw;
 }
 
 #why-mirror .reason .dot {
@@ -451,7 +450,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 
     font-family: "Nunito", sans-serif;
     font-weight: 500;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     line-height: 38px;
     color: #000000;
 }
@@ -462,18 +461,23 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 
     font-family: "Nunito", sans-serif;
     font-weight: 300;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 
     color: #000000;
 }
 
+#why-mirror .reason:nth-of-type(2) p{
+    width: 30.9vw;
+
+}
+
 #why-mirror .svg svg {
     position: absolute;
-    margin-left: -4.5vw;
-    width: 50.3vw;
+    margin-left: 0vw;
+    width: 45.3vw;
     height: 63.6vh;
     top: 0;
-    margin-top:80vh;
+    margin-top: 80vh;
 }
 
 #why-mirror .pattern svg {
@@ -482,8 +486,124 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     top: 95vh;
 }
 
+#our-product h2 {
+    padding: 42vh 9.5vw 3vh 9.6vw;
+    font-family: "Muli", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 45px;
+}
+
+#our-product p {
+    padding: 0vh 9.5vw 3vh 9.6vw;
+}
 
 
+#meet-our-team {
+    position: relative;
+}
+
+#meet-our-team h2 {
+    padding: 42vh 9.5vw 3vh 9.6vw;
+    font-family: "Muli", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 45px;
+}
+
+#meet-our-team .team-member {
+    padding: 5vh 9.5vw 5vh 9.6vw;
+    position: relative;
+    display: inline-block;
+    width: 45%;
+    height: 30vh;
+}
+
+#meet-our-team .team-member img {
+    width: 9.2vw;
+    height: 9.2vw;
+    border-radius: 50%;
+}
+
+#meet-our-team .team-member h3 {
+    position: absolute;
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 31px;
+    color: #000000;
+    margin-left: 13vw;
+    top: 5vh;
+    margin-top: 5vh;
+}
+
+#meet-our-team .team-member h4 {
+    position: absolute;
+    font-family: "Nunito", sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 31px;
+    color: #000000;
+    top: 5vh;
+    margin-left: 13vw;
+    margin-top: 10vh;
+}
+
+#meet-our-team .team-member h4:nth-of-type(2) {
+    margin-top: 14vh;
+}
+
+#meet-our-team .pattern svg {
+    position: absolute;
+    right: 0;
+    top: 5vh;
+    width: 85vw;
+}
+
+
+#sponsorship-and-credit {
+    margin-bottom: 20vh;
+}
+
+#sponsorship-and-credit h2 {
+    padding: 42vh 9.5vw 0vh 9.6vw;
+    font-family: "Muli", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 45px;
+}
+
+#sponsorship-and-credit p {
+    margin: 5vh 0vw 5vh 9.6vw;
+    font-family: "Nunito", sans-serif;
+    font-weight: 200;
+    font-size: 1.4rem;
+    line-height: 30px;
+    color: #1F1F1F;
+
+}
+
+#sponsorship-and-credit a {
+    font-family: "Nunito", sans-serif;
+    font-weight: 200;
+    font-size: 1.4rem;
+    line-height: 30px;
+    color: #0091EA;
+
+}
+
+#sponsorship-and-credit .name-card {
+    margin-top: 3vh;
+}
+
+#sponsorship-and-credit .name-card p {
+    margin: 2vh 19.2vw;
+}
+
+/* 
 .project-section ul {
     padding: 0;
     display: flex;
@@ -537,8 +657,8 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     margin: 0vh 0vw 3vh 0vw;
     opacity: 1;
 
-}
-
+} */
+/* 
 .supporting-img img {
     display: inline-block;
     width: 80%;
@@ -556,14 +676,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 .supporting-img.revealed img {
     opacity: 0.2;
     transform: translateX(0);
-}
-
-
-
-#the-problem p:nth-of-type(2){
-    margin: -5vh 0vw 0vh 25vw;
-    width: 50vw;
-}
+} 
 
 #meet-our-team.project-section, #contact-us {
     padding: 17vh 15vw 18vh 15vw;
@@ -580,7 +693,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     font-style: italic;
     font-size: 1.3rem;
     color: rgba(1, 37, 136, 0.76);
-}
+} */
 
 
 
