@@ -191,6 +191,10 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 
 /* home */
 
+#home-page {
+    background-color: #F7F6FA;
+}
+
 #home-page .home-section {
     position: relative;
     background-repeat: no-repeat;
@@ -337,44 +341,71 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 /*--------------------------------------------------------------
     HOME PAGE - Our Project
 --------------------------------------------------------------*/
-.project-section {
-    padding: 17vh 35vw 15vh 15vw;
-    background-color: rgba(219, 183, 198, 0.116);
+#our-project {
+    background-color: #F7F6FA;
+    position: relative;
+    padding-top: 10vh;
 }
 
+/*figma*/
+#our-project h2 {
+    padding: 13.5vh 9.5vw 3vh 9.6vw;
+    font-family: "Muli", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 45px;
 
-.project-section p {
-    font-size: 1.3rem;
-    font-family: 'Mukta Vaani', sans-serif;
-    font-weight:300;
-    color: rgba(0, 14, 53, 0.63);
-    opacity: .8;
+}
+
+#our-project img {
+    position: absolute;
+    margin-top: 31.7vh;
+    margin-left: 61.7vw;
+    width: 336px;
+    height: 306px;
+    top: 0;
+}
+
+#our-project svg{
+    position: absolute;
+    right: 0;
+    top: 15vh;
+    
+}
+
+/* figma */
+#our-project p {
+    padding: 0vh 0vw 2vh 9.6vw;
+    font-family: "Nunito", sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 22px;
+    line-height: 30px;
+    color: #1F1F1F;
+    width: 48.2vw;
+
     transform: translateY(5vh);
     transition: opacity .3s ease-out .2s, transform .5s ease-in .2s;
     will-change: opacity, transform;
+
+    color: #1F1F1F;
 }
 
-.project-section p.revealOnScroll {
+#our-project p.revealOnScroll {
     opacity: 0;
 
 }
 
-
-.project-section p.revealOnScroll.revealed {
-    opacity: 0.8; 
+#our-project p.revealOnScroll.revealed {
+    opacity: 1; 
     transform: translateY(0);
 }
 
 
 
-.project-section h2 {
-    font-size: 2rem;
-    color: rgb(0, 10, 29);
-    font-family: 'Nunito', sans-serif;
-    font-weight: 500; 
-    margin: 2vh 0vw 4vh 0vw;
-    text-align: left;
-}
+
+
 
 .project-section ul {
     padding: 0;
@@ -450,10 +481,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     transform: translateX(0);
 }
 
-#our-project {
-    padding: 17vh 35vw 30vh 15vw;
 
-}
 
 #the-problem p:nth-of-type(2){
     margin: -5vh 0vw 0vh 25vw;
