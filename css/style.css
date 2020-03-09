@@ -209,7 +209,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     text-shadow: 0.5px 1px #647B5E; */
 
     position: absolute;
-    width: 36vw;
+    width: 50vw;
     height: 19px;
     margin-left: 13vw;
     margin-top: 41vh;
@@ -217,7 +217,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     font-family: Nunito;
     font-style: normal;
     font-weight: normal;
-    font-size: .9rem;
+    font-size: 1.1rem;
     line-height: 19px;
 
 }
@@ -231,7 +231,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     text-shadow: 0.5px 1px #647B5E; */
 
     position: absolute;
-    width: 388px;
+    width: 60vw;
     height: 45px;
     margin-left: 13vw;
     margin-top: 31.4vh;
@@ -240,7 +240,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     font-family: 'Muli', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 2.2rem;
+    font-size: 2.7rem;
     line-height: 45px;
 
     
@@ -276,21 +276,20 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     transition: background-color 0.5s ease; */
 
     position: absolute;
-    width: 177px;
-    height: 43px;
+    width: 14.8vw;
+    height: 6.7vh;
     margin-left: 13vw;
-    margin-top: 55vh;
+    margin-top: 53vh;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.09);
     background: #FF8B38;
     border-radius: 9px;
     color: #F7F5F5;
     border: 0px;
 
-    font-family: Avenir;
+    font-family: "Avenir", sans-serif;
     font-style: normal;
     font-weight: 800;
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 1rem;
     text-align: center;
 
 }
@@ -299,9 +298,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 #home-screen a:nth-of-type(2) button {
     /* background-color: rgba(112, 133, 145, 0.5); */
     position: absolute;
-    width: 176px;
-    height: 43px;
-    margin-left: 29vw;
+    margin-left: 31vw;
 
     background: #8B6CF3;
     border-radius: 9px;
