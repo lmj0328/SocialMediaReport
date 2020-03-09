@@ -219,7 +219,6 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     margin-top: 41vh;
 
     font-family: Nunito;
-    font-style: normal;
     font-weight: normal;
     font-size: 1.1rem;
     line-height: 19px;
@@ -242,7 +241,6 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 
 
     font-family: 'Muli', sans-serif;
-    font-style: normal;
     font-weight: normal;
     font-size: 2.7rem;
     line-height: 45px;
@@ -300,13 +298,10 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 
 /* figma */
 #home-screen a:nth-of-type(2) button {
-    /* backgkround-color: rgba(112, 133, 145, 0.5); */
     position: absolute;
     margin-left: 31vw;
-
     background: #8B6CF3;
     border-radius: 9px;
-
 }
 
 #home-screen a button:hover {
@@ -318,7 +313,6 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     border-style: outset;
 }
 
-/* figma */
 #home-screen img {
     position: absolute;
     width: 48.7vw;
@@ -347,7 +341,6 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     padding-top: 10vh;
 }
 
-/*figma*/
 #our-project h2 {
     padding: 13.5vh 9.5vw 3vh 9.6vw;
     font-family: "Muli", sans-serif;
@@ -358,7 +351,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 
 }
 
-#our-project img {
+#our-project .svg svg {
     position: absolute;
     margin-top: 31.7vh;
     margin-left: 61.7vw;
@@ -367,14 +360,12 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     top: 0;
 }
 
-#our-project svg{
+#our-project .pattern svg {
     position: absolute;
     right: 0;
     top: 15vh;
-    
 }
 
-/* figma */
 #our-project p {
     padding: 0vh 0vw 2vh 9.6vw;
     font-family: "Nunito", sans-serif;
@@ -402,8 +393,94 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     transform: translateY(0);
 }
 
+#why-mirror {
+    position: relative;
+}
+
+#why-mirror h2 {
+    padding: 40vh 9.5vw 3vh 9.6vw;
+    font-family: "Muli", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 45px;
+}
+
+#why-mirror .reason {
+    position: relative;
+}
 
 
+#why-mirror .reason:nth-of-type(1) {
+    padding: 4vh 0vw 0vh 9.6vw;
+}
+
+
+#why-mirror .reason:nth-of-type(2) {
+    padding: 20vh 0vw 0vh 50.7vw;
+}
+
+#why-mirror .reason:nth-of-type(3) {
+    padding: 40vh 0vw 0vh 38.6vw;
+}
+
+#why-mirror .reason .dot {
+    width: 73px;
+    height: 73px;
+    background: rgba(55, 57, 182, 0.2);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+#why-mirror .reason .dot-label {
+    position: absolute;
+    color:black;
+
+    font-family: "Avenir", sans-serif;
+    font-weight: 500;
+    font-size: 2.2rem;
+    color: #FFFFFF;
+
+    margin: -8.5vh 0vw 0vh 1.9vw;
+}
+
+#why-mirror .reason h3 {
+    position: absolute;
+    display: block;
+    margin: -5.5vh 0vw 0vh 4vw;
+
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 38px;
+    color: #000000;
+}
+
+#why-mirror .reason p {
+    width: 45.9vw;
+    margin: 2vh 0vw 0vh 6vw;
+
+    font-family: "Nunito", sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+
+    color: #000000;
+}
+
+#why-mirror .svg svg {
+    position: absolute;
+    margin-left: -4.5vw;
+    width: 50.3vw;
+    height: 63.6vh;
+    top: 0;
+    margin-top:80vh;
+}
+
+#why-mirror .pattern svg {
+    position: absolute;
+    left: 0;
+    top: 95vh;
+}
 
 
 
