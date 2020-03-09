@@ -67,16 +67,25 @@ h3 {
     padding: 0;
 }
 
+/* figma */
 #navigation-bar .navbar-brand span {
-    padding-left: 50px;
+    /* padding-left: 50px;
     padding-right: 30px;
-    margin-top: 20px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 400;
-    color: #F7F5F5;
+    margin-top: 20px;*/
     text-shadow: 0.5px 0.5px #647B5E;
-    letter-spacing: 1px;
-    font-size: 1.2rem;
+
+    width: 42px;
+    height: 19px;
+    padding-left: 4vw;
+    margin-top: 5vh;
+    margin-right: 30px;
+    font-family: 'Nunito', sans-serif;
+    color: #F7F5F5;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 19px;
+
 }
 
 #navigation-bar ul.navbar-nav  {
@@ -192,20 +201,50 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     height: 100vh; 
 }
 
-
+/* figma */
 .title-size-1 {
-    font-weight: 400;
-    letter-spacing: 4px;
+    /* font-weight: 400;
     font-size: 15px;
     font-family: 'Athiti', sans-serif;
-    text-shadow: 0.5px 1px #647B5E;
+    text-shadow: 0.5px 1px #647B5E; */
+
+    position: absolute;
+    width: 36vw;
+    height: 19px;
+    margin-left: 13vw;
+    margin-top: 41vh;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: .9rem;
+    line-height: 19px;
+
 }
 
+
+/* figma */
 .title-size-2 {
-    font-weight: 400;
+    /* font-weight: 400;
     font-size: 35px;
-    font-family: 'Nunito', sans-serif;
-    text-shadow: 0.5px 1px #647B5E;
+    font-family: 'Muli', sans-serif;
+    text-shadow: 0.5px 1px #647B5E; */
+
+    position: absolute;
+    width: 388px;
+    height: 45px;
+    margin-left: 13vw;
+    margin-top: 31.4vh;
+
+
+    font-family: 'Muli', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.2rem;
+    line-height: 45px;
+
+    
+
 }
 
 
@@ -218,9 +257,9 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     padding-top: 5vh;
 }
 
-
+/* figma */
 #home-screen a button {
-    display: inline-block;
+    /* display: inline-block;
     margin: 5vh 1vw;
     width: 18vw;
     height: 7vh;
@@ -230,15 +269,43 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     color: #F6F4F1;
     font-family: 'Nunito', sans-serif;
     font-weight: 300;
-    background-color: rgba(112, 133, 145, 0.5);
+    background-color: rgba(112, 133, 145, 0.5); */
 
     /* background-color: rgba(134, 111, 111, 0.5); */
-    outline: none;
-    transition: background-color 0.5s ease;
+    /* outline: none;
+    transition: background-color 0.5s ease; */
+
+    position: absolute;
+    width: 177px;
+    height: 43px;
+    margin-left: 13vw;
+    margin-top: 55vh;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.09);
+    background: #FF8B38;
+    border-radius: 9px;
+    color: #F7F5F5;
+    border: 0px;
+
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+
 }
 
+/* figma */
 #home-screen a:nth-of-type(2) button {
-    background-color: rgba(112, 133, 145, 0.5);
+    /* background-color: rgba(112, 133, 145, 0.5); */
+    position: absolute;
+    width: 176px;
+    height: 43px;
+    margin-left: 29vw;
+
+    background: #8B6CF3;
+    border-radius: 9px;
+
 }
 
 #home-screen a button:hover {
@@ -250,10 +317,14 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     border-style: outset;
 }
 
-.caption-content {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
+/* figma */
+#home-screen img {
+    position: absolute;
+    width: 48.7vw;
+    height: 68.5vh;
+    left: 46.8vw;
+    margin-top: 27vh;
+
 }
 
 #footer {
@@ -324,14 +395,14 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     border-radius: 5px;
     color: rgba(0, 14, 53, 0.63);
 
-    flex-basis: 45%;
+    flex-basis: 23%;
     display: block;
     flex-grow: 0;
     align-items: stretch;
     align-content: space-between;
 }
 
-.project-section li:nth-of-type(2n) {
+.project-section li:nth-of-type(4n) {
     margin: 1vh 0vw 2vh 1vw;
 }
 
@@ -339,17 +410,20 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 .project-section li h3 {
     color: rgb(0, 10, 29);
     font-size: 1.6rem;
-    margin: 0vh 0vw 1vh 0vw;
 }
+
 
 
 .project-section li h4 {
     color: rgba(0, 14, 53, 0.76);
-
-
-    font-size: 1.1rem;
-    margin: 0vh 0vw 3vh 0vw;
+    font-size: 1rem;
+    margin: 0vh 0vw 0vh 0vw;
 }
+
+.project-section li h4:nth-of-type(1) {
+    margin: 0vh 0vw 0.5vh 0vw;
+}
+
 
 .project-section li img {
     display: block;
