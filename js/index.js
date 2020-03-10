@@ -34,6 +34,21 @@ $(window).scroll(function() {
     checkifInView();
 });
 
+$('#explore-project').click(function() {
+    $('#backdrop').removeClass('hidden');
+    $('#user-input-form').removeClass('hidden');
+    $('html').addClass('disable-scroll');
+});
+
+
+$('#cross-btn').click(function() {
+    $('#backdrop').addClass('hidden');
+    $('#user-input-form').addClass('hidden');
+    $('html').removeClass('disable-scroll');
+});
+
+
+
 function isElementInViewport(el) {
     // special bonus for those using jQuery
     if (typeof jQuery === "function" && el instanceof jQuery) {
