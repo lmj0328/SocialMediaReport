@@ -686,7 +686,10 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     border-radius: 9px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+    
+}
 
+#user-input-form .user-input > button > a{
     color: #FFFFFF;
     font-family: "Avenir", sans-serif;
     font-weight: bold;
