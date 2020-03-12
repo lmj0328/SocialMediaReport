@@ -774,7 +774,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     line-height: 14px;
 }
 
-#user-input-form .user-input > button {
+#user-input-form .user-input  button {
     position: absolute;
     right: 0;
     bottom:0;
