@@ -558,6 +558,7 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
 }
 
 #our-product .feature-container h3 {
+    margin-top: 6vh;
     font-family: "Muli", sans-serif;
     font-size: 1.7rem;
 }
