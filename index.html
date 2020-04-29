@@ -830,6 +830,100 @@
             overflow:hidden;
             background-color: black;
         }
+
+ 
+        #report-brand { 
+            position: fixed;
+            z-index: 2;
+            margin-left: 3.5vw;
+            margin-top: 6.0vh;
+            width:100vw;
+        }
+
+        #report-brand > svg {
+            display: inline-block;
+        }
+
+        #report-brand > div.brand{ 
+            display: inline-block;
+            position: absolute;
+
+            font-family: 'Nunito', sans-serif;
+            color: #F7F6FA;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 19px;
+            margin-top: 1vh;
+            margin-left: 15px;
+        }
+
+        div.year-label {
+            position: absolute;
+            padding-top: 5.2vh;
+            padding-right: 44vw;
+            font-size: 1.8rem;
+            font-family: Muli;
+            font-weight: 800;
+            line-height: 45px;
+            right:0;
+        }
+
+        div.year-label div.year-label-rectangle {
+            position: absolute;
+            display: inline-block;
+            height: 2.44vh;
+            top: 6.4vh;
+            width: 42vw;
+            right: 0;
+        }
+
+        .overall-color { 
+            background: linear-gradient(73.59deg, #3939B8 8.22%, #8A42F2 79.59%, #B568F6 100%);
+        }
+
+        .overall-color div.year-label {
+            color: #CAB5E5;
+        }
+
+        .overall-color div.year-label-rectangle {
+            background-color: #CAB5E5;
+        }
+
+        .facebook-color{ 
+            background: linear-gradient(73.59deg, #115B9C 8.22%, #69A9D7 81.84%, #BAD9F0 100%);
+        }
+
+        .facebook-color div.year-label {
+            color: #3B5999;
+        }
+
+        .facebook-color div.year-label-rectangle {
+            background-color: #3B5999;
+        }
+
+        .ins-color{ 
+            background: linear-gradient(73.59deg, #FF8B38 8.22%, #8A42F2 85.66%, #B568F6 100%);
+        }
+
+        .ins-color div.year-label {
+            color: #CAB5E5;
+        }
+
+        .ins-color div.year-label-rectangle {
+            background-color: #CAB5E5;
+        }
+
+        .twitter-color{ 
+            background: linear-gradient(73.59deg, #5E94FC 8.22%, #ABCCEF 81.36%, #FFFFFF 100%);        }
+
+        .twitter-color div.year-label {
+            color: #1DA1F2;
+        }
+
+        .twitter-color div.year-label-rectangle {
+            background-color: #1DA1F2;
+        }
     
         .section-wrap{ 
             position: fixed;
@@ -862,7 +956,7 @@
     
         .section-wrap .section .title p{ 
             padding:0 4%;
-            opacity:0
+            opacity:0;
         }
     
         .section-wrap .section .title.active .tit{ 
@@ -871,13 +965,43 @@
             transition:all 2s cubic-bezier(0.86,0,0.8,1);
             -webkit-transition:all 2s cubic-bezier(0.86,0,0.8,1);
         }
-    
-        /** Section 01 **/
-        .section-wrap .section-1{ 
-            /* background-color:#337ab7; */
-            background-image: url("report/img/Welcome.png");
-            background: linear-gradient(73.59deg, #3939B8 8.22%, #8A42F2 79.59%, #B568F6 100%);
+
+        div.text {
+            margin-top: 16.22vh;
+            margin-left: 5.4vw;
+            position: absolute;
+            margin-bottom: 8.33vh;
         }
+
+        div.text p, div.text p span {
+            color: #FFFFFF;
+            font-family: Muli;
+            font-style: normal;
+        }
+
+        div.text p, div.text span {
+            font-weight: normal;
+            font-size: 1.8rem;
+            line-height: 45px;
+        }
+
+        div.text p span.highlight{
+            font-weight: bold;
+            font-size: 2.7rem;
+            line-height: 63px;
+        }
+
+        div.text p span.emphasize {
+            font-weight: bold;
+            font-size: 3.5rem;
+            line-height: 63px;
+        }
+
+
+
+
+
+        /** Section 01 **/
 
         .section-wrap .section-1 > div { 
             position: relative;
@@ -911,44 +1035,144 @@
             left: 2.77vw;
         }
 
-        .section-wrap .section-1 > h1 { 
+        .section-wrap .section-1 > div.text { 
             position: absolute;
             left: 50.06vw;
-            top: 44.44vh;
+            top: 32vh;
+        }
 
+        .section-wrap .section-1 .text > h1 { 
             font-family: "Muli", sans-serif;
             font-weight: 800;
-            font-size: 64px;
+            font-size: 3.5rem;
             line-height: 80px;
             color: rgba(255, 255, 255, 0.95);
             text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
         }
     
-        .section-wrap .section-1 > h2 { 
-            position: absolute;
-            left: 50.06vw;
-            top: 57.55vh;
-
+        .section-wrap .section-1 .text > h2 { 
+            margin-top: 2vh;
             font-family: "Avenir", sans-serif;
             font-weight: 500;
-            font-size: 48px;
+            font-size: 2.5rem;
             line-height: 66px;
-            
             color: rgba(255, 255, 255, 0.95);
-            
             text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            
         }
 
-        .section-wrap .section-2{ 
-            background-image: url("report/img/Report - total num of report.png");
+
+
+
+        /** Section 02 **/
+
+        .section-2 div.text {
+            margin-left: 5.4vw;
+            position: absolute;
         }
-    
-        .section-wrap .section-3{ 
-            background-image: url("report/img/Report - post frequency.png");
+
+        .section-2 div.text p, .section-2 div.text p span {
+            color: #FFFFFF;
         }
-    
+
+        /*
+        .section-2 div.text div:nth-of-type(1){
+            margin-top: 16.55vh;
+        }*/
+
+        .section-2 div.text div:nth-of-type(2){
+            margin-top: 12.11vh;
+        }
+
+        .section-2 #num-of-posts-viz {
+            position:absolute;
+            margin-right: 6.9vw;
+            margin-bottom: 11.11vh;
+            right:0;
+            bottom:0;
+            height: 41.11vh;
+            width: 43.33vw;
+            background-color:white;
+        }
+
+
+
+        /** Section 03 **/
+        
+        .section-3 div.text {
+            margin-top: 16.22vh;
+            margin-left: 5.4vw;
+            position: absolute;
+            margin-bottom: 8.33vh;
+        }
+
+        .section-3 div.text div:nth-of-type(3) {
+            margin-top: 5vh;
+            width: 83vw;
+        }
+
+        .section-3 div.text div:nth-of-type(4) {
+            margin-top: 3.7vh;
+            margin-bottom: 7.5vh;
+            position: absolute;
+            right: 4.2vw;
+        }
+
+        #posting-patterns-viz {
+            margin-top: 3.7vh;
+            width: 91.66vw;
+            height: 34.44vh;
+            background-color:white;
+        }
+
+        /** Section 04 **/
+        .section-4 div.text {
+            padding-top: 16.22vh;
+            margin-bottom: 8.33vh;
+            margin-top:0vh;
+            margin-left: 0vw;
+            padding-left: 5.4vw;
+            position: absolute;
+            width: 100%;
+            height:100%
+        }
+
+        .section-4 div.text div:nth-of-type(2) {
+            position: absolute;
+            right: 22vw;
+            margin-top: 14vh;
+        }
+
+        .section-4 div.text div:nth-of-type(2) p {
+            display:inline-block;
+            margin-right: 20px;
+            padding-bottom:16px;
+        }
+
+        .section-4 div.text div:nth-of-type(3) {
+            position: absolute;
+
+            width: 49vw;;
+            right: 5vw;
+            top: 72.6vh;
+        }
+
+        .section-4 > svg {
+            position: absolute;
+            width: 38vw;
+            left: 1vw;
+            bottom: 2vh;
+        }
+
+
+
+
+
+
+
+
+
+/*
+            
         .section-wrap .section-4{ 
             background-image: url("report/img/Report - num of friends till last year.png");
         }
@@ -981,7 +1205,7 @@
             background-image: url("report/img/Report - fb relationship.png");
         } -->
     
-    
+*/
         .put-section-0{ 
             transform:translateY(0);
             -webkit-transform:translateY(0);
@@ -1106,23 +1330,26 @@
             %100{bottom:10px; opacity:1;} 
             50%{bottom:50px; opacity:.5} 
         }
+        
     </style>
     
     
-    <audio  autoplay loop>
+    <!-- <audio  autoplay loop>
         <source src="report/music/upbeat.mp3" type="audio">
     </audio> 
     <iframe src="report/music/upbeat.mp3" allow="autoplay" style="display:none" id="iframeAudio">
-    </iframe> 
+    </iframe>  -->
+    <div id="report-brand">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.0003 1.5835C26.4262 1.5835 32.4587 9.38933 32.4587 19.0002C32.4587 28.6268 26.4262 36.4168 19.0003 36.4168C11.5745 36.4168 5.54199 28.6268 5.54199 19.0002C5.54199 9.38933 11.5745 1.5835 19.0003 1.5835ZM19.0003 4.75016C13.3162 4.75016 8.70866 11.131 8.70866 19.0002C8.70866 26.8693 13.3162 33.2502 19.0003 33.2502C24.6845 33.2502 29.292 26.8693 29.292 19.0002C29.292 11.131 24.6845 4.75016 19.0003 4.75016ZM13.1262 16.2768L18.2562 11.131L19.9345 12.8093L14.8045 17.9552L13.1262 16.2768ZM13.7753 23.1327L22.737 14.171L24.4153 15.8335L15.4537 24.811L13.7753 23.1327Z" fill="white"/>
+        </svg>
+        <div class="brand">Mirror.</div>  
+    </div>
+
     <section class="section-wrap">
-        <div class="section section-1">
+        <div class="section section-1 overall-color">
             <div class="title active"></div>
-            <div>
-                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19.0003 1.5835C26.4262 1.5835 32.4587 9.38933 32.4587 19.0002C32.4587 28.6268 26.4262 36.4168 19.0003 36.4168C11.5745 36.4168 5.54199 28.6268 5.54199 19.0002C5.54199 9.38933 11.5745 1.5835 19.0003 1.5835ZM19.0003 4.75016C13.3162 4.75016 8.70866 11.131 8.70866 19.0002C8.70866 26.8693 13.3162 33.2502 19.0003 33.2502C24.6845 33.2502 29.292 26.8693 29.292 19.0002C29.292 11.131 24.6845 4.75016 19.0003 4.75016ZM13.1262 16.2768L18.2562 11.131L19.9345 12.8093L14.8045 17.9552L13.1262 16.2768ZM13.7753 23.1327L22.737 14.171L24.4153 15.8335L15.4537 24.811L13.7753 23.1327Z" fill="white"/>
-                </svg>
-                <div>Mirror.</div>  
-            </div>
+           
             <svg width="746" height="535" viewBox="0 0 746 535" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M744.5 321.853C744.5 368.286 730.707 399.354 708.648 418.841C686.555 438.357 655.932 446.469 621.865 446.469C587.798 446.469 557.175 438.357 535.082 418.841C513.023 399.354 499.23 368.286 499.23 321.853C499.23 298.796 506.892 274.068 518.479 249.878C530.06 225.702 545.517 202.16 560.998 181.5C576.476 160.845 591.958 143.099 603.571 130.516C609.377 124.225 614.214 119.227 617.598 115.804C619.29 114.092 620.618 112.774 621.523 111.885C621.644 111.765 621.759 111.653 621.865 111.549C621.971 111.653 622.086 111.765 622.208 111.885C623.112 112.774 624.44 114.092 626.132 115.804C629.516 119.227 634.353 124.225 640.159 130.516C651.772 143.099 667.254 160.845 682.732 181.5C698.213 202.16 713.67 225.702 725.251 249.878C736.839 274.068 744.5 298.796 744.5 321.853Z" stroke="#98B9F3" stroke-width="3"/>
                 <path d="M617.344 433.67L618.615 355.438L671.524 258.653L618.814 343.166L619.386 307.989L655.85 237.966L619.536 298.68V298.681L620.565 235.413L659.612 179.667L620.726 225.465L621.368 109.457L617.332 263.031L617.664 256.695L577.964 195.936L617.027 268.857L613.328 339.514L613.218 337.639L567.451 273.698L613.08 344.264L612.617 353.101L612.534 353.234L612.572 353.959L603.187 533.224H615.726L617.23 440.63L662.747 370.236L617.344 433.67Z" fill="#3F3D56"/>
@@ -1216,57 +1443,162 @@
                 </linearGradient>
                 </defs>
             </svg>
-
-            <h1>Welcome ${name}</h1>
-            <h2>Your journey starts here...</h2>
-            <!-- <p class="tit">Welcome page</p> -->
+            <div class="text">
+                <h1>Welcome ${name}</h1>
+                <h2>Your journey starts here...</h2>
+            </div>
             
         </div>
-        <div class="section section-2">
+        <div class="section section-2 overall-color">
+            <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
+            <div class="text">
+                <div>
+                    <p>In the last year of <span class="highlight">2019</span>, </p>
+                    <p><span class="highlight">365</span> days,<p>
+                    <p><span class="highlight">8760</span> hours, you published <span class="emphasize">{56}</span> posts across your social media platforms. <p>
+                </div>
+                <div>
+                    <p><span class="emphasize">{32}</span> from <span class="emphasize">Twitter,</span></p>
+                    <p><span class="emphasize">{18}</span> from <span class="emphasize">Instagram,</span><p>
+                    <p><span class="emphasize">{6}</span> from <span class="emphasize">Facebook.</span><p>
+                </div>
+            </div>
+            <div id="num-of-posts-viz"></div>
+        </div>
+
+
+        <div class="section section-3 overall-color">
+            <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
+
+            <div class="text">
+                <div>
+                    <p>In the past <span class="highlight">12</span> months, there is a trend line of your posting patterns. <p>
+                </div>
+                <div id="posting-patterns-viz"></div>
+                <div>
+                    <p>In <span class="emphasize">{JAN}</span>, you published the most posts, <span class="highlight">{15}</span> in total with <span class="highlight">{0}</span> from <span class="highlight">Facebook</span> and <span class="highlight">{15}</span> from <span class="highlight">Twitter.</span></p>
+                </div>
+                <div>
+                    <p>Did your mood change as the time went by?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-4 facebook-color">
+            <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
+            <div class="text">
+                <div>
+                    <p>Until the year of <span class="highlight">2019</span>, you have friended <span class="emphasize">423</span> people</p>
+                </div>
+                <div>
+                    <p><span class="highlight">on</span><p>
+                    <svg width="299" height="91" viewBox="0 0 299 91" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H299V91H0V0Z" fill="#3B5999"/>
+                        <rect x="15" y="17" width="57" height="57" rx="5" fill="white" fill-opacity="0.9"/>
+                        <path d="M53.7388 27.1788L47.6316 27.1951C44.932 27.2022 42.3415 28.2256 40.4299 30.0399C38.5182 31.8543 37.4421 34.3111 37.4382 36.8698L37.4294 42.6584L31.3222 42.6746L31.3105 50.3928L37.4177 50.3766L37.3942 65.8129L45.5371 65.7912L45.5606 50.3549L51.6678 50.3387L53.7153 42.6152L45.5724 42.6368L45.5812 36.8482C45.5819 36.3364 45.7972 35.8451 46.1795 35.4822C46.5618 35.1193 47.0799 34.9147 47.6198 34.9132L53.727 34.897L53.7388 27.1788Z" fill="#3B5999" stroke="#3B5999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M106.55 39.75V65H100.4V60.95C99.6333 62.35 98.5333 63.45 97.1 64.25C95.6667 65.0167 94.0333 65.4 92.2 65.4C90 65.4 88.05 64.8667 86.35 63.8C84.65 62.7333 83.3333 61.2167 82.4 59.25C81.4667 57.2833 81 55 81 52.4C81 49.8 81.4667 47.5 82.4 45.5C83.3667 43.4667 84.7 41.9 86.4 40.8C88.1 39.6667 90.0333 39.1 92.2 39.1C94.0333 39.1 95.6667 39.5 97.1 40.3C98.5333 41.0667 99.6333 42.15 100.4 43.55V39.75H106.55ZM93.9 60.5C95.9667 60.5 97.5667 59.7833 98.7 58.35C99.8333 56.9167 100.4 54.9 100.4 52.3C100.4 49.6333 99.8333 47.5833 98.7 46.15C97.5667 44.7167 95.95 44 93.85 44C91.7833 44 90.1667 44.75 89 46.25C87.8667 47.7167 87.3 49.7667 87.3 52.4C87.3 55 87.8667 57 89 58.4C90.1667 59.8 91.8 60.5 93.9 60.5ZM124.807 65.4C122.174 65.4 119.89 64.8667 117.957 63.8C116.024 62.7333 114.54 61.2333 113.507 59.3C112.474 57.3333 111.957 55.0333 111.957 52.4C111.957 49.7667 112.49 47.45 113.557 45.45C114.657 43.45 116.19 41.9 118.157 40.8C120.157 39.6667 122.457 39.1 125.057 39.1C126.857 39.1 128.59 39.3833 130.257 39.95C131.957 40.5167 133.307 41.3 134.307 42.3L132.557 46.7C131.49 45.8333 130.357 45.1833 129.157 44.75C127.957 44.2833 126.774 44.05 125.607 44.05C123.34 44.05 121.574 44.7667 120.307 46.2C119.04 47.6 118.407 49.6333 118.407 52.3C118.407 54.9667 119.024 57 120.257 58.4C121.524 59.8 123.307 60.5 125.607 60.5C126.774 60.5 127.957 60.2667 129.157 59.8C130.357 59.3333 131.49 58.6667 132.557 57.8L134.307 62.2C133.24 63.2 131.857 63.9833 130.157 64.55C128.457 65.1167 126.674 65.4 124.807 65.4ZM160.604 52.7H143.204C143.337 55.4 144.004 57.4 145.204 58.7C146.437 59.9667 148.254 60.6 150.654 60.6C153.42 60.6 155.987 59.7 158.354 57.9L160.154 62.2C158.954 63.1667 157.47 63.95 155.704 64.55C153.97 65.1167 152.204 65.4 150.404 65.4C146.27 65.4 143.02 64.2333 140.654 61.9C138.287 59.5667 137.104 56.3667 137.104 52.3C137.104 49.7333 137.62 47.45 138.654 45.45C139.687 43.45 141.137 41.9 143.004 40.8C144.87 39.6667 146.987 39.1 149.354 39.1C152.82 39.1 155.554 40.2333 157.554 42.5C159.587 44.7333 160.604 47.8167 160.604 51.75V52.7ZM149.504 43.6C147.837 43.6 146.47 44.1 145.404 45.1C144.37 46.0667 143.704 47.4833 143.404 49.35H155.154C154.954 47.45 154.37 46.0167 153.404 45.05C152.47 44.0833 151.17 43.6 149.504 43.6ZM180.296 39.1C182.496 39.1 184.429 39.65 186.096 40.75C187.796 41.8167 189.113 43.3333 190.046 45.3C190.979 47.2667 191.446 49.55 191.446 52.15C191.446 54.75 190.963 57.0667 189.996 59.1C189.063 61.1 187.746 62.65 186.046 63.75C184.379 64.85 182.463 65.4 180.296 65.4C178.429 65.4 176.763 65 175.296 64.2C173.863 63.4 172.779 62.2833 172.046 60.85V65H165.896V28.2H172.096V43.55C172.863 42.15 173.963 41.0667 175.396 40.3C176.829 39.5 178.463 39.1 180.296 39.1ZM178.646 60.5C180.713 60.5 182.313 59.7667 183.446 58.3C184.579 56.8333 185.146 54.7833 185.146 52.15C185.146 49.55 184.579 47.55 183.446 46.15C182.313 44.7167 180.696 44 178.596 44C176.496 44 174.879 44.7167 173.746 46.15C172.613 47.5833 172.046 49.6167 172.046 52.25C172.046 54.9167 172.613 56.9667 173.746 58.4C174.879 59.8 176.513 60.5 178.646 60.5ZM208.352 65.4C205.785 65.4 203.519 64.8667 201.552 63.8C199.619 62.7333 198.119 61.2167 197.052 59.25C196.019 57.25 195.502 54.9167 195.502 52.25C195.502 49.5833 196.019 47.2667 197.052 45.3C198.119 43.3 199.619 41.7667 201.552 40.7C203.519 39.6333 205.785 39.1 208.352 39.1C210.885 39.1 213.119 39.6333 215.052 40.7C216.985 41.7667 218.469 43.3 219.502 45.3C220.569 47.2667 221.102 49.5833 221.102 52.25C221.102 54.9167 220.569 57.25 219.502 59.25C218.469 61.2167 216.985 62.7333 215.052 63.8C213.119 64.8667 210.885 65.4 208.352 65.4ZM208.302 60.5C210.435 60.5 212.052 59.8167 213.152 58.45C214.285 57.05 214.852 54.9833 214.852 52.25C214.852 49.55 214.285 47.5 213.152 46.1C212.019 44.6667 210.419 43.95 208.352 43.95C206.252 43.95 204.635 44.6667 203.502 46.1C202.369 47.5 201.802 49.55 201.802 52.25C201.802 54.9833 202.352 57.05 203.452 58.45C204.585 59.8167 206.202 60.5 208.302 60.5ZM237.942 65.4C235.375 65.4 233.108 64.8667 231.142 63.8C229.208 62.7333 227.708 61.2167 226.642 59.25C225.608 57.25 225.092 54.9167 225.092 52.25C225.092 49.5833 225.608 47.2667 226.642 45.3C227.708 43.3 229.208 41.7667 231.142 40.7C233.108 39.6333 235.375 39.1 237.942 39.1C240.475 39.1 242.708 39.6333 244.642 40.7C246.575 41.7667 248.058 43.3 249.092 45.3C250.158 47.2667 250.692 49.5833 250.692 52.25C250.692 54.9167 250.158 57.25 249.092 59.25C248.058 61.2167 246.575 62.7333 244.642 63.8C242.708 64.8667 240.475 65.4 237.942 65.4ZM237.892 60.5C240.025 60.5 241.642 59.8167 242.742 58.45C243.875 57.05 244.442 54.9833 244.442 52.25C244.442 49.55 243.875 47.5 242.742 46.1C241.608 44.6667 240.008 43.95 237.942 43.95C235.842 43.95 234.225 44.6667 233.092 46.1C231.958 47.5 231.392 49.55 231.392 52.25C231.392 54.9833 231.942 57.05 233.042 58.45C234.175 59.8167 235.792 60.5 237.892 60.5ZM273.332 65L262.282 53.35V65H256.082V28.2H262.282V50.9L272.682 39.8H280.232L268.882 51.85L281.132 65H273.332ZM283.421 59.85H288.571V65H283.421V59.85Z" fill="white"/>
+                    </svg>
+                </div>
+                <div>
+                    <p><span class="highlight">Looks like you are surrounded by warm friendship!</span></p>
+                </div>
+            </div>
+                
+            <svg width="536" height="310" viewBox="0 0 536 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M115.023 8.6846H115.023C127.841 8.6846 138.232 20.0553 138.232 34.0817V51.9025H132.674L129.456 45.2998L130.26 51.9025H94.5323L91.6068 45.9L92.3382 51.9025H88.3156V37.91C88.3156 21.7693 100.273 8.6846 115.023 8.6846Z" fill="white"/>
+                <path d="M251.825 310C112.746 310 -0.000183105 302.538 -0.000183105 293.333C-0.000183105 284.129 112.746 276.667 251.825 276.667C390.904 276.667 503.649 284.129 503.649 293.333C503.649 302.538 390.904 310 251.825 310Z" fill="#DADD9D"/>
+                <path d="M421.473 287.391C421.584 287.213 424.197 282.91 425.103 273.976C425.934 265.779 425.4 251.963 418.133 232.691C404.367 196.181 421.306 166.723 421.479 166.429L420.643 165.951C420.599 166.026 416.228 173.537 413.646 185.496C410.234 201.352 411.477 217.838 417.228 233.023C430.971 269.471 420.753 286.725 420.649 286.895L421.473 287.391Z" fill="white"/>
+                <path d="M426.856 164.286C423.388 164.286 420.577 161.514 420.577 158.095C420.577 154.676 423.388 151.905 426.856 151.905C430.323 151.905 433.134 154.676 433.134 158.095C433.134 161.514 430.323 164.286 426.856 164.286Z" fill="#FEFC8A"/>
+                <path d="M407.055 187.143C403.587 187.143 400.777 184.371 400.777 180.952C400.777 177.533 403.587 174.762 407.055 174.762C410.522 174.762 413.333 177.533 413.333 180.952C413.333 184.371 410.522 187.143 407.055 187.143Z" fill="white"/>
+                <path d="M420.577 202.381C417.11 202.381 414.299 199.609 414.299 196.19C414.299 192.772 417.11 190 420.577 190C424.045 190 426.855 192.772 426.855 196.19C426.855 199.609 424.045 202.381 420.577 202.381Z" fill="#FEFC8A"/>
+                <path d="M404.157 215.238C400.69 215.238 397.879 212.467 397.879 209.048C397.879 205.629 400.69 202.857 404.157 202.857C407.625 202.857 410.436 205.629 410.436 209.048C410.436 212.467 407.625 215.238 404.157 215.238Z" fill="#FEFC8A"/>
+                <path d="M425.407 235.238C421.94 235.238 419.129 232.467 419.129 229.048C419.129 225.629 421.94 222.857 425.407 222.857C428.875 222.857 431.686 225.629 431.686 229.048C431.686 232.467 428.875 235.238 425.407 235.238Z" fill="white"/>
+                <path d="M417.68 287.619C417.68 287.619 423.958 272.381 405.124 260.952L417.68 287.619Z" fill="white"/>
+                <path d="M425.401 287.343C425.401 287.343 428.258 271.138 450.373 271.277L425.401 287.343Z" fill="white"/>
+                <path d="M126.226 40.7143C126.226 40.7143 118.982 57.3809 128.641 60.7143L118.982 92.1428L102.562 91.1905L98.2154 80.7143L99.1813 65L100.63 54.5238C100.63 54.5238 110.772 56.9048 109.806 39.2857L126.226 40.7143Z" fill="#FFB8B8"/>
+                <path d="M130.089 60.2381C130.089 60.2381 146.026 58.8095 144.577 70.2381C143.129 81.6667 141.68 84.0476 141.68 84.0476L140.231 101.191L148.924 106.429H157.134C157.134 106.429 182.247 112.143 169.69 118.333C157.134 124.524 152.787 113.571 152.787 113.571C152.787 113.571 129.606 113.571 128.158 109.762C126.709 105.952 130.089 60.2381 130.089 60.2381Z" fill="#FFB8B8"/>
+                <path d="M99.1816 55.4762C99.1816 55.4762 84.2105 50.2381 83.2446 61.6666C82.2788 73.0952 82.2788 74.0476 82.2788 74.0476L79.3811 90.2381C79.3811 90.2381 73.5858 104.524 73.5858 108.809C73.5858 113.095 69.2394 126.429 69.2394 126.429C69.2394 126.429 63.4441 145 69.7223 144.524C76.0005 144.048 76.9664 124.524 76.9664 124.524L90.0058 98.8095L93.8693 83.0952L99.1816 55.4762Z" fill="#FFB8B8"/>
+                <path d="M127.675 58.3333H131.539L132.022 78.3333C132.022 78.3333 138.3 86.9048 130.573 94.5238L128.641 106.905L93.3867 105.476L90.972 92.6191C90.972 92.6191 86.1426 82.1429 92.9038 72.6191L99.182 53.0952H102.563C102.563 53.0952 94.7328 81.561 111.255 82.1429C124.778 82.6191 127.675 58.3333 127.675 58.3333Z" fill="url(#paint0_linear)"/>
+                <path d="M126.709 104.524L129.607 114.048C129.607 114.048 189.974 281.667 171.622 285.952C153.271 290.238 127.675 295.952 125.26 291.667C122.845 287.381 110.289 162.143 110.289 162.143C110.289 162.143 112.221 293.095 105.943 293.095C99.6644 293.095 58.1316 294.048 55.7169 287.857C53.3022 281.667 77.4492 115.952 91.4544 112.143L95.3179 103.571L126.709 104.524Z" fill="url(#paint1_linear)"/>
+                <path d="M91.9371 99.7619L130.089 101.19C130.089 101.19 131.831 114.048 130.089 114.048C129.606 114.048 90.0054 117.381 90.4883 111.667C90.9713 105.952 91.9371 99.7619 91.9371 99.7619Z" fill="url(#paint2_linear)"/>
+                <path opacity="0.2" d="M334.972 243.581L332.132 243.038V243.052C333.069 243.257 334.015 243.433 334.972 243.581Z" fill="black"/>
+                <path d="M118.763 46.1682C111.268 46.1682 105.193 40.1779 105.193 32.7884C105.193 25.3989 111.268 19.4085 118.763 19.4085C126.257 19.4085 132.332 25.3989 132.332 32.7884C132.332 40.1779 126.257 46.1682 118.763 46.1682Z" fill="#FFB8B8"/>
+                <path d="M108.425 15.6807C109.542 14.2019 110.989 12.9967 112.655 12.1586C114.321 11.3205 116.16 10.8721 118.029 10.8481H118.485C127.271 10.8481 134.393 18.6869 134.393 28.3565V28.3566H131.449L130.973 24.7884L130.276 28.3566H112.817L111.354 25.3379L111.72 28.3566H108.285C106.682 36.2052 108.985 44.0538 115.194 51.9025H109.343L106.417 45.8651L107.149 51.9025H95.995L93.8009 38.0164C93.8009 27.617 99.9289 18.7985 108.425 15.6807Z" fill="white"/>
+                <path d="M105.218 17.1429C100.417 17.1429 96.5253 13.3053 96.5253 8.57143C96.5253 3.83756 100.417 0 105.218 0C110.019 0 113.911 3.83756 113.911 8.57143C113.911 13.3053 110.019 17.1429 105.218 17.1429Z" fill="white"/>
+                <defs>
+                <linearGradient id="paint0_linear" x1="111.864" y1="53.0952" x2="111.864" y2="106.905" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FEFC8A"/>
+                <stop offset="1" stop-color="#5DC0E2"/>
+                </linearGradient>
+                <linearGradient id="paint1_linear" x1="115.322" y1="103.571" x2="115.322" y2="293.185" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FEFC8A"/>
+                <stop offset="1" stop-color="#5DC0E2"/>
+                </linearGradient>
+                <linearGradient id="paint2_linear" x1="110.674" y1="99.7619" x2="110.674" y2="115.014" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FEFC8A"/>
+                <stop offset="1" stop-color="#5DC0E2"/>
+                </linearGradient>
+                </defs>
+            </svg>
+                
+        </div>
+
+
+
+        <div class="section section-5 twitter-color">
+            <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
+
             <div class="title">
                 <!-- <p class="tit">title placeholder</p> -->
             </div>
         </div>
-        <div class="section section-3">
+
+
+
+        <div class="section section-6 overall-color">
+            <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
+
             <div class="title">
                 <!-- <p class="tit">title placeholder</p> -->
             </div>
         </div>
-        <div class="section section-4">
+
+
+
+        <div class="section section-7 ins-color">
+            <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
+
             <div class="title">
                 <!-- <p class="tit">title placeholder</p> -->
             </div>
         </div>
-        <div class="section section-5">
+
+
+        
+        <div class="section section-8 twitter-color">
+            <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
+
             <div class="title">
                 <!-- <p class="tit">title placeholder</p> -->
             </div>
         </div>
-        <div class="section section-6">
+
+        <div class="section section-9 facebook-color">
+            <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
+
             <div class="title">
                 <!-- <p class="tit">title placeholder</p> -->
             </div>
         </div>
-        <div class="section section-7">
+
+        <div class="section section-10 ins-color">
+            <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
+
             <div class="title">
                 <!-- <p class="tit">title placeholder</p> -->
             </div>
         </div>
-        <div class="section section-8">
-            <div class="title">
-                <!-- <p class="tit">title placeholder</p> -->
-            </div>
-        </div>
-        <div class="section section-9">
-            <div class="title">
-                <!-- <p class="tit">title placeholder</p> -->
-            </div>
-        </div>
-        <div class="section section-10">
-            <div class="title">
-                <!-- <p class="tit">title placeholder</p> -->
-            </div>
-        </div>
+        
         <!-- <div class="section section-11">
             <div class="title">
                 <!-- <p class="tit">title placeholder</p> -->
