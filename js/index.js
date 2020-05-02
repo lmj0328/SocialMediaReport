@@ -28,7 +28,6 @@ async function first() {
 
         var data = getQueryParams(document.location.search)
 
-
         renderReport(json, data);
         
     }
@@ -94,6 +93,7 @@ function renderMainPage() {
     //         jsonp: "$callback",
     //         success: renderReport
     //     })
+    //   renderReport(json, )
     // });
 }
 

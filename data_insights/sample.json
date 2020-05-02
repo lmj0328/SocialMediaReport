@@ -1,3 +1,7 @@
 [
-    {"Thumbnail": "image.jpg", "Name": "Jamie", "Bio": "Some info about me"}
+    {
+        "Thumbnail": "image.jpg", 
+        "Name": "Jamie", 
+        "Bio": "Some info about me"
+    }
 ]
