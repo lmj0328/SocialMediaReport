@@ -14,14 +14,20 @@ def hello():
 @app.route('/report', methods=['POST'])
 def report():
     request_info = request.form.get("name")
-    if request.form.get("twitter-input"): twitter_info = request.form.get("twitter-input")
-    else: twitter_info =  "twitter"
+    if request.form.get("twitter-input"): 
+        twitter_info = request.form.get("twitter-input")
+    else: 
+        twitter_info = bool(False)
 
-    if request.form.get("facebook-input"): facebook_info = request.form.get("facebook-input")
-    else: facebook_info = "facebook"
+    if request.form.get("facebook-input"): 
+        facebook_info = request.form.get("facebook-input")
+    else: 
+        facebook_info = bool(False)
 
-    if request.form.get("instagram-input"): instagram_info = request.form.get("instagram-input")
-    else: instagram_info = "instagram"
+    if request.form.get("instagram-input"): 
+        instagram_info = request.form.get("instagram-input")
+    else: 
+        instagram_info = bool(False)
 
     #Incoming data is processed here and converted into following format:
     data = {

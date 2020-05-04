@@ -843,6 +843,7 @@
     </div>
 
     <section class="section-wrap">
+
         <div class="section section-1 overall-color">
             <div class="title active"></div>
            
@@ -946,6 +947,8 @@
             </div>
             
         </div>
+
+
         <div class="section section-2 overall-color">
             <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
             <div class="text">
@@ -981,6 +984,7 @@
             </div>
         </div>
 
+        {% if data.userInput.facebookInput != False %}
         <div class="section section-4 facebook-color">
             <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
             <div class="text">
@@ -1039,8 +1043,10 @@
             </svg>
                 
         </div>
-     
+        {% endif %}
 
+
+        {% if data.userInput.twitterInput != False %}
         <div class="section section-5 twitter-color">
             <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
             <div class="text">
@@ -1121,7 +1127,10 @@
                 </defs>
             </svg>
         </div>
+        {% endif %}
 
+
+        {% if data.userInput.twitterInput != False %}
         <div class="section section-6 twitter-color">
             <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
             <div class="text">
@@ -1368,7 +1377,10 @@
                 </defs>
             </svg>
         </div>
+        {% endif %}
 
+
+        {% if data.userInput.instagramInput != False %}
         <div class="section section-7 ins-color">
             <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
             <div class="ins">{picture}</div>
@@ -1436,7 +1448,10 @@
             </svg>
                                       
         </div>
+        {% endif %}
 
+
+        {% if data.userInput.twitterInput != False %}
         <div class="section section-8 twitter-color">
             <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
             <div class="text">
@@ -1528,8 +1543,10 @@
             </svg>
                    
         </div>
+        {% endif %}
 
 
+        {% if data.userInput.facebookInput != False %}
         <div class="section section-9 facebook-color">
             <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
             <div class="text">
@@ -1575,11 +1592,9 @@
             </svg>
             <div class="fb">{picture}</div>
         </div>
+        {% endif %}
 
-
-
-
-
+        {% if data.userInput.instagramInput != False %}
         <div class="section section-10 ins-color">
             <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
             <div class="text">
@@ -1647,18 +1662,33 @@
                 </defs>
             </svg> 
         </div>
+        {% endif %}
+
+
     </section>
     <ul class="section-btn">
         <li class="on">title placeholder</li>
         <li>title placeholder</li>
         <li>title placeholder</li>
+
+        {% if data.userInput.facebookInput != False %}
+        <li></li>
+        <li></li>
+        {% endif %}
+
+
+        {% if data.userInput.instagramInput != False %}
+        <li></li>
+        <li></li>
+        {% endif %}
+
+        
+        {% if data.userInput.twitterInput != False %}
         <li></li>
         <li></li>
         <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        {% endif %}
+
         <!-- <li></li> -->
     </ul>
     <!-- <div class="arrow">&laquo;</div> -->
@@ -1820,16 +1850,24 @@ $(function(){
     };
     
     $wrap.one('mousewheel', mouse_);
+    var waiting = false;
     function mouse_(event){
+        if (waiting) {
+            return;
+        }
+        waiting = true;
+
         if(event.deltaY < 0) {
             up();
         } else{
             down();
         }
         run();
+
         setTimeout(function(){
             $wrap.one('mousewheel',mouse_)
-        },1000)
+            waiting = false;
+        }, 1200)
     };
     
     $(document).one('keydown',k);
@@ -1837,9 +1875,9 @@ $(function(){
         var e=event||window.event;
         var key=e.keyCode||e.which||e.charCode;
         switch(key)	{
-            case 38: down();run();	
+            case 38: down(); run();	
             break;
-            case 40: up();run();	
+            case 40: up(); run();	
             break;
         };
         setTimeout(function(){
