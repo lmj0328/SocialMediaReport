@@ -19,6 +19,9 @@
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700" rel="stylesheet">
 
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
     <!--Specific Stylesheets-->
 </head>
 
@@ -624,10 +627,14 @@
         left: 2.986vw;
     }
 
-    .section-wrap .section-8 > .rectangle { 
+    #max-at {
         position: absolute;
-        right: 18.375vw;
-        bottom: 20.33vh;
+        width: 49.86vw;
+        height: 40.44vh;
+        background-color: white;
+        left: 30.76vw;
+        right: 18.375vw; 
+        right: 18.375vw;    
     }
 
     /** Section 09 **/
@@ -963,7 +970,8 @@
                     <p><span class="emphasize">{{data.numOfPost.facebook}}</span> from <span class="emphasize">Facebook.</span><p>
                 </div>
             </div>
-            <div id="num-of-posts-viz"></div>
+            <!-- <div id="num-of-posts-viz"><canvas id="myChart"></canvas></div> -->
+            <div id="num-of-posts-viz"><canvas id="myChart"><p id="twitter">{{data.numOfPost.twitter}}</p></canvas></div>
         </div>
 
 
@@ -974,7 +982,7 @@
                 <div>
                     <p>In the past <span class="highlight">12</span> months, there is a trend line of your posting patterns. <p>
                 </div>
-                <div id="posting-patterns-viz"></div>
+                <div id="posting-patterns-viz"><canvas id="lineChart" width="1319" height="309"><p id="pattern">{{data.monthMostPost.monthPost}}</p></canvas></div>
                 <div>
                     <p>In <span class="emphasize">{{data.monthMostPost.month}}</span>, you published the most posts, <span class="highlight">{{data.monthMostPost.total}}</span> in total with <span class="highlight">{{data.monthMostPost.facebook}}</span> from <span class="highlight">Facebook</span> and <span class="highlight">{{data.monthMostPost.twitter}}</span> from <span class="highlight">Twitter.</span></p>
                 </div>
@@ -1461,6 +1469,10 @@
                 <div>
                     <p><span class="highlight">You must care about them a lot!</span></p> 
                 </div>
+                <div id="max-at">
+                    <canvas id="tagChart" width="718" height="364"><p id="mention_name">{{data.twitterPeopleMentionedMost.names}}</p>
+                    <p id="mention_count">{{data.twitterPeopleMentioneTimes.top_times}}</p></canvas>
+                    </div>
             </div>
             <svg class="bird" width="151" height="149" viewBox="0 0 151 149" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d)">
@@ -1477,31 +1489,7 @@
                 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
                 </filter>
                 </defs>
-            </svg>
-            <svg class="rectangle" width="738" height="392" viewBox="0 0 738 392" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g filter="url(#filter0_bdd)">
-                <path d="M25 13.5L713 13.5C720.456 13.5 726.5 19.5442 726.5 27L726.5 361C726.5 368.456 720.456 374.5 713 374.5L25 374.5C17.5442 374.5 11.5 368.456 11.5 361L11.5 27C11.5 19.5442 17.5442 13.5 25 13.5Z" stroke="#1DA1F2" stroke-width="3"/>
-                </g>
-                <defs>
-                <filter id="filter0_bdd" x="0" y="0" width="738" height="392" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feGaussianBlur in="BackgroundImage" stdDeviation="2"/>
-                <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-                <feOffset dy="-2"/>
-                <feGaussianBlur stdDeviation="5"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                <feBlend mode="normal" in2="effect1_backgroundBlur" result="effect2_dropShadow"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-                <feOffset dy="6"/>
-                <feGaussianBlur stdDeviation="5"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                <feBlend mode="normal" in2="effect2_dropShadow" result="effect3_dropShadow"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect3_dropShadow" result="shape"/>
-                </filter>
-                </defs>
-            </svg>
-               
+            </svg>           
             <svg class="illustration" width="303" height="212" viewBox="0 0 303 212" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0)">
                 <path d="M113.636 206.77C167.764 206.77 211.644 162.938 211.644 108.868C211.644 54.7988 167.764 10.9668 113.636 10.9668C59.5083 10.9668 15.6289 54.7988 15.6289 108.868C15.6289 162.938 59.5083 206.77 113.636 206.77Z" fill="#F2F2F2"/>
@@ -1698,12 +1686,179 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script> -->
 <!--Script - Jquery-->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <!--my own javascript-->
 <script>
+    // draw mention times
+    let mention_name_data = document.getElementById("mention_name").innerHTML;
+    let mention_time_data = document.getElementById("mention_count").innerHTML;
+    let mention_name = mention_name_data.slice(1, -1).split(', ').map(d => d.slice(1, -1));
+    let mention_time = mention_time_data.slice(1, -1).split(', ').map(d => +d);
+    console.log(mention_name);
+    console.log(mention_time);
+    let myChart3 = document.getElementById('tagChart');
+        let tagChart = new Chart(myChart3, {
+            type: 'horizontalBar',
+            data: {
+                labels: mention_name,
+                datasets: [{
+                data: mention_time,
+                backgroundColor: [
+                    'rgba(243, 159, 57, 1)',
+                    'rgba(87, 57, 210, 1)',
+                    'rgba(87, 57, 210, 1)'
+                ],
+                borderColor: [
+                'rgba(243, 159, 57, 1)',
+                'rgba(87, 57, 210, 1)',
+                'rgba(87, 57, 210, 1)'
+                ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            yAxes: [{
+            gridLines: {
+                display: false
+            }
+            }],
+            xAxes: [{
+            gridLines: {
+                display: false
+            },
+            ticks: {
+                beginAtZero: true
+            }
+        }]           
+        },
+        title: {
+            display: false
+        },
+        legend: {
+            display: false
+        },
+        layout: {
+            padding: {
+                left: 23,
+                right: 10,
+                bottom: 50,
+                top: 0
+            }
+        }
+    }
+});
+
+    // draw trend data
+    let twitterPatternData = document.getElementById("pattern").innerHTML;
+    let twitterPattern = twitterPatternData.slice(1, -1).split(', ').map(d => +d);
+
+    let myChart2 = document.getElementById('lineChart');
+    let lineChart = new Chart(myChart2, {
+        type: "line",
+        data: data = {
+            labels:['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+            datasets: [{
+                data: twitterPattern,
+                fill: false,
+                borderColor: 'rgba(243, 159, 57, 1)',
+                backgroundColor: 'rgba(243, 159, 57, 1)',
+                label: 'Twitter'
+                },{
+                data: [0, 9, 10, 4, 5, 6, 9, 7, 9, 10, 0, 12],
+                fill: false,
+                borderColor: 'rgba(87, 57, 210, 1)',
+                backgroundColor: 'rgba(87, 57, 210, 1)',
+                label: 'Facebook'
+                }
+            ]
+        },
+        options: {
+        scales: {
+            // yAxes: [{
+            // gridLines: {
+            //     display: false
+            // }
+            // }],
+            xAxes: [{
+            gridLines: {
+                display: false
+            }
+        }]           
+        },
+        layout: {
+            padding: {
+                left: 8,
+                right: 20,
+                bottom: 45,
+                top: 0
+            }
+        }
+    }
+    });
+
+    // draw bar graph
+    let numOfTwitter = document.getElementById("twitter").innerHTML;
+    // console.log(numOfTwitter);
+    let numOfPost = {"twitter": numOfTwitter, "instagram": 18, "facebook": 6};
+    // console.log(numOfPost);
+    let myChart = document.getElementById('myChart').getContext('2d');
+    Chart.defaults.global.defaultFontFamily = 'Muli';
+    Chart.defaults.global.defaultFontSize = 15;
+    Chart.defaults.global.defaultFontStyle = 'normal';
+    let barChart = new Chart(myChart, {
+        type: 'horizontalBar',
+        data: {
+            labels: ['Twitter', 'Instagram', 'Facebook'],
+            datasets: [{
+            data: [numOfPost.twitter, numOfPost.instagram, numOfPost.facebook],
+            backgroundColor: [
+                'rgba(243, 159, 57, 1)',
+                'rgba(87, 57, 210, 1)',
+                'rgba(87, 57, 210, 1)'
+            ],
+            borderColor: [
+            'rgba(243, 159, 57, 1)',
+            'rgba(87, 57, 210, 1)',
+            'rgba(87, 57, 210, 1)'
+            ],
+        borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+        yAxes: [{
+        gridLines: {
+            display: false
+        }
+        }],
+        xAxes: [{
+        gridLines: {
+            display: false
+        }
+    }]           
+    },
+    title: {
+        display: false
+    },
+    legend: {
+        display: false
+    },
+    layout: {
+        padding: {
+            left: 5,
+            right: 18,
+            bottom: 0,
+            top: 0
+        }
+    }
+}
+});
+
     !function(a){
     "function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a:a(jQuery)
 }(function(a){
