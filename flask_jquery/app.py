@@ -8,6 +8,9 @@ import GetOldTweets3 as got
 import pandas as pd
 import datetime
 import numpy as np
+import requests
+import json
+from pyquery import PyQuery as pq
 
 app = Flask(__name__)
 
@@ -104,6 +107,39 @@ def report():
     mention_name = mention_set.mentions.tolist()
     mention_counts = mention_set.counts.tolist()
 
+    ##INS
+    ins_user = instagram_info
+    url = ("https://www.instagram.com/", ins_user, '/')
+    url = "".join(url)
+    headers = {
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+    #     'cookie': 'mid=W4VyZwALAAHeINz8GOIBiG_jFK5l; mcd=3; csrftoken=KFLY0ovWwChYoayK3OBZLvSuD1MUL04e; ds_user_id=8492674110; sessionid=IGSCee8a4ca969a6825088e207468e4cd6a8ca3941c48d10d4ac59713f257114e74b%3Acwt7nSRdUWOh00B4kIEo4ZVb4ddaZDgs%3A%7B%22_auth_user_id%22%3A8492674110%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%228492674110%3Avsy7NZ3ZPcKWXfPz356F6eXuSUYAePW8%3Ae8135a385c423477f4cc8642107dec4ecf3211270bb63eec0a99da5b47d7a5b7%22%2C%22last_refreshed%22%3A1535472763.3352122307%7D; csrftoken=KFLY0ovWwChYoayK3OBZLvSuD1MUL04e; rur=FRC; urlgen="{\"103.102.7.202\": 57695}:1furLR:EZ6OcQaIegf5GSdIydkTdaml6QU"'
+    }
+
+    def get_urls(url):
+        try:
+            response = requests.get(url, headers=headers)
+            if response.status_code == 200:
+                return response.text
+            else:    
+                print('error code：', response.status_code)        
+        except Exception as e:
+            print(e)
+            return None
+
+    html = get_urls(url)
+    urls = []
+    doc = pq(html)
+    items = doc('script[type="text/javascript"]').items()   
+
+    for item in items:
+        if item.text().strip().startswith('window._sharedData'):
+            js_data = json.loads(item.text()[21:-1], encoding='utf-8')
+            edges = js_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"]
+            for edge in edges:
+                url = edge['node']['display_url']
+                urls.append(url)
+
     #Incoming data is processed here and converted into following format:
     data = {
         "year": 2019,
@@ -149,17 +185,7 @@ def report():
             "comments": ["comment1", "comment2", "comment3", "comment4"],
             "totalComments": 12
         },
-        "insNinephotos": [
-            "pictureLink1",
-            "pictureLink2",
-            "pictureLink3",
-            "pictureLink4",
-            "pictureLink5",
-            "pictureLink6",
-            "pictureLink7",
-            "pictureLink8",
-            "pictureLink9"
-        ],
+        "insNinephotos": urls,
         "facebookNumOfFriends": 423,
         "facebookRecentAcademic": {
             "schoolName":"Texas Academy of Mathematics and Technology",
