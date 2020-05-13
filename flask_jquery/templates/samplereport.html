@@ -22,6 +22,10 @@
     <!-- Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
+     <!-- anyChart -->
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+
     <!--Specific Stylesheets-->
 </head>
 
@@ -370,17 +374,24 @@
 
     .section-4 div.text div:nth-of-type(2) {
         position: absolute;
+        left: 12vw;
+        margin-top: 5vh;
+        margin-bottom: 10vh;
+    }
+
+    .section-4 div.text div:nth-of-type(3) {
+        position: absolute;
         right: 22vw;
         margin-top: 14vh;
     }
 
-    .section-4 div.text div:nth-of-type(2) p {
+    .section-4 div.text div:nth-of-type(3) p {
         display:inline-block;
         margin-right: 20px;
         padding-bottom:16px;
     }
 
-    .section-4 div.text div:nth-of-type(3) {
+    .section-4 div.text div:nth-of-type(4) {
         position: absolute;
 
         width: 49vw;;
@@ -1143,6 +1154,7 @@
                 <div>
                     <p>Until the year of <span class="highlight">2019</span>, you have friended <span class="emphasize">{{data.facebookNumOfFriends}}</span> people</p>
                 </div>
+                <div><img src="../static/img/facebook_friend.png" alt="facebook friend wall" " style="width:60%;height:auto;"></div>
                 <div>
                     <p><span class="highlight">on</span><p>
                     <svg width="299" height="91" viewBox="0 0 299 91" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1534,7 +1546,7 @@
         <div class="section section-7 ins-color">
             <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
             <div class="ins">{picture}</div>
-            <div class="word_cloud">{word cloud}</div>
+            <div class="word_cloud" id="word_cloud"></div>
             <div class="text">
                 <div>
                     <p>This post received the most comments of <span class="highlight">{{data.insPostMostComments.totalComments}}</span>.</p>
@@ -2022,6 +2034,31 @@
 
 <!--my own javascript-->
 <script>
+    // draw word cloud
+    anychart.onDocumentReady(function() {
+        var word_cloud_data = [{"x": "Cute!", "value": "20", category: "a"},
+                           {"x": "Cool place to go", "value": "13", category: "b"},
+                           {"x": "Awesome!", "value": "10", category: "c"},
+                           {"x": "Wow", "value": "18", category: "d"},
+                           {"x": "I love you!", "value": "12", category: "e"},
+                           {"x": "Nice outfit", "value": "9", category: "a"},
+                           {"x": "Yay!!", "value": "6", category: "b"},
+                           {"x": "Dang", "value": "23", category: "c"},
+                           {"x": "Where is this place?", "value": "8", category: "d"},
+                           {"x": "good", "value": "20", category: "e"}];
+        var chart = anychart.tagCloud(word_cloud_data);
+        chart.angles([0])
+        chart.colorRange(true);
+        chart.colorRange().length('80%');
+        var colorRange = chart.colorRange();
+        colorRange.labels(false);
+        // chart.angles([0, -45, 90])
+        chart.container("word_cloud");
+        var tooltip = chart.tooltip();
+        tooltip.enabled(false);
+        chart.draw();
+    });
+
     // draw mention times
     let mention_name_data = document.getElementById("mention_name").innerHTML;
     let mention_time_data = document.getElementById("mention_count").innerHTML;
