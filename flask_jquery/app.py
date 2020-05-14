@@ -23,20 +23,19 @@ def report():
     request_info = request.form.get("name")
     data = {}
     data["userInput"] = {}
+    data["userInput"]["name"] = request_info
     data["numOfPost"] = {}
-    data["numOfPost"]["total"] = 0, 
-    data["numOfPost"]["instagram"]: 18
-    data["numOfPost"]["facebook"]: 0
+    data["numOfPost"]["total"] = 0
+    data["numOfPost"]["instagram"] = 18
+    data["numOfPost"]["facebook"] = 0
 
   
     ### error handling
     errorMessage = {
         "noUserInput": "Oops, you did not enter any username ...",
-        "wrongTwitterInput": "Oops, the Twitter username you enter does not exist...",
+        "wrongTwitterInput": "Oops, the twitter account you enter either does not exist or has no content in it...",
         "wrongInstagramInput": "Oops, the Instagram username you enter does not exist...",
-        "emptyTwitterContent": "Oops, your twitter account currently has no content..",
         "emptyInstagramContent": "Oops, your instagram account currently has no content..",
-        "emptyInstagramAccount": "Oops, your instagram account is private, change it to public to view your report"
     }
 
     #TWITTER
@@ -65,10 +64,14 @@ def report():
         # Data Aggregation
         # Number of posts
         num_post = tweets_df.shape[0]
+        print(num_post)
+        if num_post == 0:
+            return render_template("error.html", data = errorMessage["wrongTwitterInput"])
+        else:
+            data["numOfPost"]["twitter"] = num_post
+            data["numOfPost"]["total"] = num_post
 
-        data["numOfPost"]["twitter"] = num_post
-        data["numOfPost"]["total"] = num_post
-
+    
         #Month  with most post
         tweets_df['month'] = pd.DatetimeIndex(tweets_df['date']).month
         month_posts = tweets_df.groupby(['month']).size().reset_index(name='counts')
@@ -83,7 +86,6 @@ def report():
         df2= df2.fillna(0)
         df2.drop('month',1).reset_index()
         month_trend =  df2.counts.tolist()
-
         data["monthMostPost"] = {
             "month": most_month_verb,
             "total": month_posts_count,
@@ -95,6 +97,8 @@ def report():
         # Twitter Total Like
         total_like = tweets_df.favorites.sum()
         total_like = format(total_like, ',')
+        data["totalLikesTwitter"] = total_like
+
 
         # Twitter most like posts
         most_favorites_set = tweets_df[tweets_df.favorites == tweets_df.favorites.max()]
@@ -103,6 +107,12 @@ def report():
         most_fav_date = most_favorites_set.date.values[0]
         most_fav_date = pd.to_datetime(str(most_fav_date ))
         most_fav_date = most_fav_date.strftime('%Y.%m.%d')
+
+        data["twitterPostWithMostLikes"] = {
+            "content":most_fav_text,
+            "date": most_fav_date,
+            "twitterAccount": "@" + twitter_info
+        }
 
         # The latest post
         tweets_df['hour'] = tweets_df.date.dt.hour
@@ -114,6 +124,12 @@ def report():
         latest_date = latest_date.strftime('%Y.%m.%d')
         latest_hour = (str(df1.hour.values[0]), ':00')
         latest_hour = "".join(latest_hour)
+        data["twitterLatestPost"] = {
+            "content":latest_text,
+            "date":latest_date,
+            "time":latest_hour,
+            "twitterAccount": "@" + twitter_info
+        }
 
         #Mention Most
         tweets_df['mentions'].replace('', np.nan, inplace=True)
@@ -124,47 +140,57 @@ def report():
             mention_set = mention_set.iloc[:3]
         mention_name = mention_set.mentions.tolist()
         mention_counts = mention_set.counts.tolist()
-
-
-        
-        data["totalLikesTwitter"] = total_like
-        data["twitterPostWithMostLikes"] = {
-            "content":most_fav_text,
-            "date": most_fav_date,
-            "twitterAccount": "@" + twitter_info
-        }
-        data["twitterLatestPost"] = {
-            "content":latest_text,
-            "date":latest_date,
-            "time":latest_hour,
-            "twitterAccount": "@" + twitter_info
-        }
         data["twitterPeopleMentionedMost"] = {
             "names":mention_name
         }
         data["twitterPeopleMentioneTimes"] = {
             "top_times":mention_counts
         }
+
+        # Tweet first post
+        tweet_arrange = tweets_df.sort_values(by = ['date'])
+        first_tweet = tweet_arrange.iloc[[0]]
+        first_text = first_tweet.tweet_text.values[0]
+        first_date = first_tweet.date.values[0]
+        first_date = pd.to_datetime(str(first_date))
+        first_date = first_date.strftime('%Y.%m.%d')
         data["twitterFirstPostYear"] = {
-            "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
-            "date": "Jun.29 2019",
+            "content":first_text,
+            "date": first_date,
             "twitterAccount": "@" + twitter_info
         }
+
+        # Tweet last post
+        last_tweet = tweet_arrange.iloc[[-1]]
+        last_text = last_tweet.tweet_text.values[0]
+        last_date = last_tweet.date.values[0]
+        last_date = pd.to_datetime(str(last_date))
+        last_date = last_date.strftime('%Y.%m.%d')
         data["twitterLastPostYear"] = {
-            "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
-            "date": "Jun.29 2019",
+            "content":last_text,
+            "date": last_date,
             "twitterAccount": "@" + twitter_info
         }
+
+        # Hashtags
+        tweets_df['hashtags'].replace('', np.nan, inplace=True)
+        tweets_df.dropna(subset=['hashtags'], inplace=True)
+        hash_set = tweets_df.groupby(['hashtags']).size().reset_index(name='counts')
+        hash_set.sort_values(by=['counts'], inplace=True, ascending=False)
+        hash_name = hash_set.hashtags.tolist()
+        hash_counts = hash_set.counts.tolist()
+        hash_most = hash_name[0]
+        hash_most
         data["twitterHashtag"] = {
-            "hashtags":["#hashtag 1", "#hashtag 2", "#hashtag 3"],
-            "hashtagsCount": [5, 2, 1],
-            "hashtagMost": "#Sunset"
+            "hashtags":hash_name,
+            "hashtagsCount": hash_counts,
+            "hashtagMost": hash_most
         }
+
     else: 
         twitter_info = bool(False)
         data["userInput"]["twitterInput"] = bool(False)
         
-
 
     ## FACEBOOK
     if request.form.get("facebook-input"): 
@@ -191,36 +217,37 @@ def report():
                     return response.text
                 else:    
                     print('error code：', response.status_code)
-                    return render_template("error.html", data = errorMessage["wrongInstagramInput"])
-   
+                    return True
 
             except Exception as e:
                 print(e)
                 return None
 
         html = get_urls(url)
-        urls = []
-        doc = pq(html)
-        items = doc('script[type="text/javascript"]').items()   
-
-        for item in items:
-            if item.text().strip().startswith('window._sharedData'):
-                js_data = json.loads(item.text()[21:-1], encoding='utf-8')
-                edges = js_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"]
-                for edge in edges:
-                    url = edge['node']['display_url']
-                    urls.append(url)
-
-        if urls == []:
-            return render_template("error.html", data = errorMessage["emptyInstagramAccount"])
+        if (html == True):
+            return render_template("error.html", data = errorMessage["wrongInstagramInput"])
         else:
-            data["userInput"]["instagramInput"] = instagram_info
-            data["insPostMostComments"] = {
-                "pictureLink": ["picture here"],
-                "comments": ["comment1", "comment2", "comment3", "comment4"],
-                "totalComments": 12
-            }
-            data["insNinephotos"] = urls
+            urls = []
+            doc = pq(html)
+            items = doc('script[type="text/javascript"]').items()   
+            for item in items:
+                if item.text().strip().startswith('window._sharedData'):
+                    js_data = json.loads(item.text()[21:-1], encoding='utf-8')
+                    edges = js_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"]
+                    for edge in edges:
+                        url = edge['node']['display_url']
+                        urls.append(url)
+
+            if urls == []:
+                return render_template("error.html", data = errorMessage["emptyInstagramContent"])
+            else:
+                data["userInput"]["instagramInput"] = instagram_info
+                data["insPostMostComments"] = {
+                    "pictureLink": ["picture here"],
+                    "comments": ["comment1", "comment2", "comment3", "comment4"],
+                    "totalComments": 12
+                }
+                data["insNinephotos"] = urls
     else: 
         instagram_info = bool(False)
         data["userInput"]["instagramInput"] = bool(False)
@@ -237,75 +264,8 @@ def report():
             "schoolName":"Texas Academy of Mathematics and Technology",
             "year":2019
         }
-
-        # data = {
-        #     "year": 2019,
-        #     "userInput": {
-        #         "name": request_info,
-        #         "twitterInput": twitter_info,
-        #         "facebookInput": facebook_info,
-        #         "instagramInput": instagram_info
-        #     },
-        #     "numOfPost": {
-        #         "total": num_post + 18 + 6, 
-        #         "twitter": num_post, 
-        #         "instagram": 18,
-        #         "facebook": 6
-        #     },
-        #     "monthMostPost": {
-        #         "month": most_month_verb,
-        #         "total": month_posts_count,
-        #         "facebook": 0,
-        #         "twitter": month_posts_count,
-        #         "monthPost":month_trend
-        #     },
-        #     "totalLikesTwitter": total_like,
-        #     "twitterPostWithMostLikes": {
-        #         "content":most_fav_text,
-        #         "date": most_fav_date,
-        #         "twitterAccount": "@" + twitter_info
-        #     },
-        #     "twitterLatestPost":{
-        #         "content":latest_text,
-        #         "date":latest_date,
-        #         "time":latest_hour,
-        #         "twitterAccount": "@" + twitter_info
-        #     },
-        #     "twitterPeopleMentionedMost": {
-        #         "names":mention_name
-        #     },
-        #     "twitterPeopleMentioneTimes": {
-        #         "top_times":mention_counts
-        #     },
-        #     "twitterFirstPostYear": {
-        #         "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
-        #         "date": "Jun.29 2019",
-        #         "twitterAccount": "@" + twitter_info
-        #     },
-        #     "twitterLastPostYear": {
-        #         "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
-        #         "date": "Jun.29 2019",
-        #         "twitterAccount": "@" + twitter_info
-        #     },
-        #     "twitterHashtag": {
-        #         "hashtags":["#hashtag 1", "#hashtag 2", "#hashtag 3"],
-        #         "hashtagsCount": [5, 2, 1],
-        #         "hashtagMost": "#Sunset"
-        #     },
-        #     "insPostMostComments": {
-        #         "pictureLink": ["picture here"],
-        #         "comments": ["comment1", "comment2", "comment3", "comment4"],
-        #         "totalComments": 12
-        #     },
-        #     "insNinephotos": urls,
-        #     "facebookNumOfFriends": 423,
-        #     "facebookRecentAcademic": {
-        #         "schoolName":"Texas Academy of Mathematics and Technology",
-        #         "year":2019
-        #     }
-        # }
-
         return render_template("samplereport.html", data = data)
+
 
 if __name__ == '__main__':
     app.run(debug=True, threaded=True)
