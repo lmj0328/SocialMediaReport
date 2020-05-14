@@ -56,6 +56,32 @@ def report():
         # Number of posts
         num_post = tweets_df.shape[0]
 
+
+        # Tweet first post
+        tweet_arrange = tweets_df.sort_values(by = ['date'])
+        first_tweet = tweet_arrange.iloc[[0]]
+        first_text = first_tweet.tweet_text.values[0]
+        first_date = first_tweet.date.values[0]
+        first_date = pd.to_datetime(str(first_date))
+        first_date = first_date.strftime('%Y.%m.%d')
+
+        # Tweet last post
+        last_tweet = tweet_arrange.iloc[[-1]]
+        last_text = last_tweet.tweet_text.values[0]
+        last_date = last_tweet.date.values[0]
+        last_date = pd.to_datetime(str(last_date))
+        last_date = last_date.strftime('%Y.%m.%d')
+
+        # Hashtags
+        tweets_df['hashtags'].replace('', np.nan, inplace=True)
+        tweets_df.dropna(subset=['hashtags'], inplace=True)
+        hash_set = tweets_df.groupby(['hashtags']).size().reset_index(name='counts')
+        hash_set.sort_values(by=['counts'], inplace=True, ascending=False)
+        hash_name = hash_set.hashtags.tolist()
+        hash_counts = hash_set.counts.tolist()
+        hash_most = hash_name[0]
+        hash_most
+
         #Month  with most post
         tweets_df['month'] = pd.DatetimeIndex(tweets_df['date']).month
         month_posts = tweets_df.groupby(['month']).size().reset_index(name='counts')
@@ -93,6 +119,7 @@ def report():
         latest_date = latest_date.strftime('%Y.%m.%d')
         latest_hour = (str(df1.hour.values[0]), ':00')
         latest_hour = "".join(latest_hour)
+        
 
         #Mention Most
         tweets_df['mentions'].replace('', np.nan, inplace=True)
@@ -117,6 +144,7 @@ def report():
         latest_hour = 0
         mention_name = 0
         mention_counts = 0
+
 
 
     ## FACEBOOK
@@ -209,19 +237,19 @@ def report():
                 "top_times":mention_counts
             },
             "twitterFirstPostYear": {
-                "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
-                "date": "Jun.29 2019",
+                "content":first_text,
+                "date": first_date,
                 "twitterAccount": "@" + twitter_info
             },
             "twitterLastPostYear": {
-                "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
-                "date": "Jun.29 2019",
+                "content":last_text,
+                "date": last_date,
                 "twitterAccount": "@" + twitter_info
             },
             "twitterHashtag": {
-                "hashtags":["#hashtag 1", "#hashtag 2", "#hashtag 3"],
-                "hashtagsCount": [5, 2, 1],
-                "hashtagMost": "#Sunset"
+                "hashtags":hash_name,
+                "hashtagsCount": hash_counts,
+                "hashtagMost": hash_most
             },
             "insPostMostComments": {
                 "pictureLink": ["picture here"],
