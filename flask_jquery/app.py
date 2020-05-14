@@ -97,6 +97,18 @@ def report():
         mention_counts = mention_set.counts.tolist()
     else: 
         twitter_info = bool(False)
+        num_post = 0
+        most_month_verb = 0
+        month_posts_count = 0
+        month_trend = []
+        total_like = 0
+        most_fav_text = ""
+        most_fav_date = 0
+        latest_text = ""
+        latest_date = 0
+        latest_hour = 0
+        mention_name = 0
+        mention_counts = 0
 
 
     ## FACEBOOK
@@ -141,6 +153,7 @@ def report():
                     urls.append(url)
     else: 
         instagram_info = bool(False)
+        urls = []
 
 
     #Incoming data is processed here and converted into following format:
