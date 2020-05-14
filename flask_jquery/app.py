@@ -21,7 +21,15 @@ def hello():
 @app.route('/report', methods=['POST'])
 def report():
     request_info = request.form.get("name")
-
+    ### error handling
+    errorMessage = {
+        "noUserInput": "Oops, you did not enter any username ...",
+        "wrongTwitterInput": "Oops, the Twitter username you enter does not exist...",
+        "wrongInstagramInput": "Oops, the Instagram username you enter does not exist...",
+        "emptyTwitterContent": "Oops, your twitter account currently has no content..",
+        "emptyTwitterContent": "Oops, your instagram account currently has no content..",
+        "privateInstagramAccount": "Oops, your instagram account is private, change it to public to view your report"
+    }
     #TWITTER
     if request.form.get("twitter-input"): 
         twitter_info = request.form.get("twitter-input")
@@ -155,60 +163,79 @@ def report():
         instagram_info = bool(False)
         urls = []
 
-
-    #Incoming data is processed here and converted into following format:
-    data = {
-        "year": 2019,
-        "userInput": {
-            "name": request_info,
-            "twitterInput": twitter_info,
-            "facebookInput": facebook_info,
-            "instagramInput": instagram_info
-        },
-        "numOfPost": {
-            "total": num_post + 18 + 6, 
-            "twitter": num_post, 
-            "instagram": 18,
-            "facebook": 6
-        },
-        "monthMostPost": {
-            "month": most_month_verb,
-            "total": month_posts_count,
-            "facebook": 0,
-            "twitter": month_posts_count,
-            "monthPost":month_trend
-        },
-        "totalLikesTwitter": total_like,
-        "twitterPostWithMostLikes": {
-            "content":most_fav_text,
-            "date": most_fav_date,
-            "twitterAccount": twitter_info
-        },
-        "twitterLatestPost":{
-            "content":latest_text,
-            "date":latest_date,
-            "time":latest_hour,
-            "twitterAccount": twitter_info
-        },
-        "twitterPeopleMentionedMost": {
-            "names":mention_name
-        },
-        "twitterPeopleMentioneTimes": {
-            "top_times":mention_counts
-        },
-        "insPostMostComments": {
-            "pictureLink": ["picture here"],
-            "comments": ["comment1", "comment2", "comment3", "comment4"],
-            "totalComments": 12
-        },
-        "insNinephotos": urls,
-        "facebookNumOfFriends": 423,
-        "facebookRecentAcademic": {
-            "schoolName":"Texas Academy of Mathematics and Technology",
-            "year":2019
+    
+    # if no user input for social media
+    if (not twitter_info) and (not instagram_info) and (not facebook_info):
+        return render_template("error.html", data = errorMessage["noUserInput"])
+    else:
+        #Incoming data is processed here and converted into following format:
+        data = {
+            "year": 2019,
+            "userInput": {
+                "name": request_info,
+                "twitterInput": twitter_info,
+                "facebookInput": facebook_info,
+                "instagramInput": instagram_info
+            },
+            "numOfPost": {
+                "total": num_post + 18 + 6, 
+                "twitter": num_post, 
+                "instagram": 18,
+                "facebook": 6
+            },
+            "monthMostPost": {
+                "month": most_month_verb,
+                "total": month_posts_count,
+                "facebook": 0,
+                "twitter": month_posts_count,
+                "monthPost":month_trend
+            },
+            "totalLikesTwitter": total_like,
+            "twitterPostWithMostLikes": {
+                "content":most_fav_text,
+                "date": most_fav_date,
+                "twitterAccount": "@" + twitter_info
+            },
+            "twitterLatestPost":{
+                "content":latest_text,
+                "date":latest_date,
+                "time":latest_hour,
+                "twitterAccount": "@" + twitter_info
+            },
+            "twitterPeopleMentionedMost": {
+                "names":mention_name
+            },
+            "twitterPeopleMentioneTimes": {
+                "top_times":mention_counts
+            },
+            "twitterFirstPostYear": {
+                "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
+                "date": "Jun.29 2019",
+                "twitterAccount": "@" + twitter_info
+            },
+            "twitterLastPostYear": {
+                "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
+                "date": "Jun.29 2019",
+                "twitterAccount": "@" + twitter_info
+            },
+            "twitterHashtag": {
+                "hashtags":["#hashtag 1", "#hashtag 2", "#hashtag 3"],
+                "hashtagsCount": [5, 2, 1],
+                "hashtagMost": "#Sunset"
+            },
+            "insPostMostComments": {
+                "pictureLink": ["picture here"],
+                "comments": ["comment1", "comment2", "comment3", "comment4"],
+                "totalComments": 12
+            },
+            "insNinephotos": urls,
+            "facebookNumOfFriends": 423,
+            "facebookRecentAcademic": {
+                "schoolName":"Texas Academy of Mathematics and Technology",
+                "year":2019
+            }
         }
-    }
-    return render_template("samplereport.html", data = data)
+        return render_template("samplereport.html", data = data)
 
 if __name__ == '__main__':
     app.run(debug=True, threaded=True)
