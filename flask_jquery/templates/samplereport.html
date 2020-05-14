@@ -1956,8 +1956,9 @@
                 <div>
                     <p>The hashtag that you used most frequently was</p> 
                 </div>
-                <div id="wordcloud"></div>
+                <div id="wordcloud" class="wordcloud"></div>
             </div>
+            <p id="hashtag" style="display: none">{{data.twitterHashtag.hashtags}}</p><p id="hashtag_count" style="display: none">{{data.twitterHashtag.hashtagsCount}}</p>
             <div>
                 <p class="hashtag">{{data.twitterHashtag.hashtagMost}}</p> 
             </div>
@@ -2086,13 +2087,41 @@
         chart.draw();
     });
 
+    // draw hashtag word cloud
+    let hashtag_data = document.getElementById("hashtag").innerHTML;
+    let hashtag_count_data = document.getElementById("hashtag_count").innerHTML;
+    let hashtag = hashtag_data.slice(1, -1).split(', ').map(d => d.slice(1, -1));
+    let hashtag_count = hashtag_count_data.slice(1, -1).split(', ').map(d => +d);
+    var hashtag_dic = [];
+    var len = hashtag.length;
+    for (var i = 0; i < len; i++) {
+        hashtag_dic.push({
+            "x": hashtag[i],
+            "value": hashtag_count[i],
+            category: hashtag_count[i].toString() + " time"
+        });
+    }
+    console.log(hashtag_dic);
+    anychart.onDocumentReady(function() {
+        var chart = anychart.tagCloud(hashtag_dic);
+        chart.angles([0])
+        chart.colorRange(true);
+        chart.colorRange().length('80%');
+        var colorRange = chart.colorRange();
+        colorRange.labels(true);
+        // chart.angles([0, -45, 90])
+        chart.container("wordcloud");
+        var tooltip = chart.tooltip();
+        // tooltip.enabled(false);
+        chart.draw();
+    });
+
+
     // draw mention times
     let mention_name_data = document.getElementById("mention_name").innerHTML;
     let mention_time_data = document.getElementById("mention_count").innerHTML;
     let mention_name = mention_name_data.slice(1, -1).split(', ').map(d => d.slice(1, -1));
     let mention_time = mention_time_data.slice(1, -1).split(', ').map(d => +d);
-    console.log(mention_name);
-    console.log(mention_time);
     let myChart3 = document.getElementById('tagChart');
         let tagChart = new Chart(myChart3, {
             type: 'horizontalBar',
