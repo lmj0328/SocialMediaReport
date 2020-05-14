@@ -21,18 +21,28 @@ def hello():
 @app.route('/report', methods=['POST'])
 def report():
     request_info = request.form.get("name")
+    data = {}
+    data["userInput"] = {}
+    data["numOfPost"] = {}
+    data["numOfPost"]["total"] = 0, 
+    data["numOfPost"]["instagram"]: 18
+    data["numOfPost"]["facebook"]: 0
+
+  
     ### error handling
     errorMessage = {
         "noUserInput": "Oops, you did not enter any username ...",
         "wrongTwitterInput": "Oops, the Twitter username you enter does not exist...",
         "wrongInstagramInput": "Oops, the Instagram username you enter does not exist...",
         "emptyTwitterContent": "Oops, your twitter account currently has no content..",
-        "emptyTwitterContent": "Oops, your instagram account currently has no content..",
-        "privateInstagramAccount": "Oops, your instagram account is private, change it to public to view your report"
+        "emptyInstagramContent": "Oops, your instagram account currently has no content..",
+        "emptyInstagramAccount": "Oops, your instagram account is private, change it to public to view your report"
     }
+
     #TWITTER
     if request.form.get("twitter-input"): 
         twitter_info = request.form.get("twitter-input")
+        data["userInput"]["twitterInput"] = twitter_info
 
         username = twitter_info
         tweetCriteria = got.manager.TweetCriteria().setUsername(username)\
@@ -56,6 +66,9 @@ def report():
         # Number of posts
         num_post = tweets_df.shape[0]
 
+        data["numOfPost"]["twitter"] = num_post
+        data["numOfPost"]["total"] = num_post
+
         #Month  with most post
         tweets_df['month'] = pd.DatetimeIndex(tweets_df['date']).month
         month_posts = tweets_df.groupby(['month']).size().reset_index(name='counts')
@@ -70,6 +83,14 @@ def report():
         df2= df2.fillna(0)
         df2.drop('month',1).reset_index()
         month_trend =  df2.counts.tolist()
+
+        data["monthMostPost"] = {
+            "month": most_month_verb,
+            "total": month_posts_count,
+            "facebook": 0,
+            "twitter": month_posts_count,
+            "monthPost":month_trend
+        }
 
         # Twitter Total Like
         total_like = tweets_df.favorites.sum()
@@ -103,20 +124,46 @@ def report():
             mention_set = mention_set.iloc[:3]
         mention_name = mention_set.mentions.tolist()
         mention_counts = mention_set.counts.tolist()
+
+
+        
+        data["totalLikesTwitter"] = total_like
+        data["twitterPostWithMostLikes"] = {
+            "content":most_fav_text,
+            "date": most_fav_date,
+            "twitterAccount": "@" + twitter_info
+        }
+        data["twitterLatestPost"] = {
+            "content":latest_text,
+            "date":latest_date,
+            "time":latest_hour,
+            "twitterAccount": "@" + twitter_info
+        }
+        data["twitterPeopleMentionedMost"] = {
+            "names":mention_name
+        }
+        data["twitterPeopleMentioneTimes"] = {
+            "top_times":mention_counts
+        }
+        data["twitterFirstPostYear"] = {
+            "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
+            "date": "Jun.29 2019",
+            "twitterAccount": "@" + twitter_info
+        }
+        data["twitterLastPostYear"] = {
+            "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
+            "date": "Jun.29 2019",
+            "twitterAccount": "@" + twitter_info
+        }
+        data["twitterHashtag"] = {
+            "hashtags":["#hashtag 1", "#hashtag 2", "#hashtag 3"],
+            "hashtagsCount": [5, 2, 1],
+            "hashtagMost": "#Sunset"
+        }
     else: 
         twitter_info = bool(False)
-        num_post = 0
-        most_month_verb = 0
-        month_posts_count = 0
-        month_trend = []
-        total_like = 0
-        most_fav_text = ""
-        most_fav_date = 0
-        latest_text = ""
-        latest_date = 0
-        latest_hour = 0
-        mention_name = 0
-        mention_counts = 0
+        data["userInput"]["twitterInput"] = bool(False)
+        
 
 
     ## FACEBOOK
@@ -124,6 +171,7 @@ def report():
         facebook_info = request.form.get("facebook-input")
     else: 
         facebook_info = bool(False)
+        data["userInput"]["facebookInput"] = bool(False)
 
     ## INSTAGRAM
     if request.form.get("instagram-input"): 
@@ -142,7 +190,10 @@ def report():
                 if response.status_code == 200:
                     return response.text
                 else:    
-                    print('error code：', response.status_code)        
+                    print('error code：', response.status_code)
+                    return render_template("error.html", data = errorMessage["wrongInstagramInput"])
+   
+
             except Exception as e:
                 print(e)
                 return None
@@ -159,9 +210,20 @@ def report():
                 for edge in edges:
                     url = edge['node']['display_url']
                     urls.append(url)
+
+        if urls == []:
+            return render_template("error.html", data = errorMessage["emptyInstagramAccount"])
+        else:
+            data["userInput"]["instagramInput"] = instagram_info
+            data["insPostMostComments"] = {
+                "pictureLink": ["picture here"],
+                "comments": ["comment1", "comment2", "comment3", "comment4"],
+                "totalComments": 12
+            }
+            data["insNinephotos"] = urls
     else: 
         instagram_info = bool(False)
-        urls = []
+        data["userInput"]["instagramInput"] = bool(False)
 
     
     # if no user input for social media
@@ -169,72 +231,80 @@ def report():
         return render_template("error.html", data = errorMessage["noUserInput"])
     else:
         #Incoming data is processed here and converted into following format:
-        data = {
-            "year": 2019,
-            "userInput": {
-                "name": request_info,
-                "twitterInput": twitter_info,
-                "facebookInput": facebook_info,
-                "instagramInput": instagram_info
-            },
-            "numOfPost": {
-                "total": num_post + 18 + 6, 
-                "twitter": num_post, 
-                "instagram": 18,
-                "facebook": 6
-            },
-            "monthMostPost": {
-                "month": most_month_verb,
-                "total": month_posts_count,
-                "facebook": 0,
-                "twitter": month_posts_count,
-                "monthPost":month_trend
-            },
-            "totalLikesTwitter": total_like,
-            "twitterPostWithMostLikes": {
-                "content":most_fav_text,
-                "date": most_fav_date,
-                "twitterAccount": "@" + twitter_info
-            },
-            "twitterLatestPost":{
-                "content":latest_text,
-                "date":latest_date,
-                "time":latest_hour,
-                "twitterAccount": "@" + twitter_info
-            },
-            "twitterPeopleMentionedMost": {
-                "names":mention_name
-            },
-            "twitterPeopleMentioneTimes": {
-                "top_times":mention_counts
-            },
-            "twitterFirstPostYear": {
-                "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
-                "date": "Jun.29 2019",
-                "twitterAccount": "@" + twitter_info
-            },
-            "twitterLastPostYear": {
-                "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
-                "date": "Jun.29 2019",
-                "twitterAccount": "@" + twitter_info
-            },
-            "twitterHashtag": {
-                "hashtags":["#hashtag 1", "#hashtag 2", "#hashtag 3"],
-                "hashtagsCount": [5, 2, 1],
-                "hashtagMost": "#Sunset"
-            },
-            "insPostMostComments": {
-                "pictureLink": ["picture here"],
-                "comments": ["comment1", "comment2", "comment3", "comment4"],
-                "totalComments": 12
-            },
-            "insNinephotos": urls,
-            "facebookNumOfFriends": 423,
-            "facebookRecentAcademic": {
-                "schoolName":"Texas Academy of Mathematics and Technology",
-                "year":2019
-            }
+        data["year"] = 2019
+        data["facebookNumOfFriends"] = 423
+        data["facebookRecentAcademic"] = {
+            "schoolName":"Texas Academy of Mathematics and Technology",
+            "year":2019
         }
+
+        # data = {
+        #     "year": 2019,
+        #     "userInput": {
+        #         "name": request_info,
+        #         "twitterInput": twitter_info,
+        #         "facebookInput": facebook_info,
+        #         "instagramInput": instagram_info
+        #     },
+        #     "numOfPost": {
+        #         "total": num_post + 18 + 6, 
+        #         "twitter": num_post, 
+        #         "instagram": 18,
+        #         "facebook": 6
+        #     },
+        #     "monthMostPost": {
+        #         "month": most_month_verb,
+        #         "total": month_posts_count,
+        #         "facebook": 0,
+        #         "twitter": month_posts_count,
+        #         "monthPost":month_trend
+        #     },
+        #     "totalLikesTwitter": total_like,
+        #     "twitterPostWithMostLikes": {
+        #         "content":most_fav_text,
+        #         "date": most_fav_date,
+        #         "twitterAccount": "@" + twitter_info
+        #     },
+        #     "twitterLatestPost":{
+        #         "content":latest_text,
+        #         "date":latest_date,
+        #         "time":latest_hour,
+        #         "twitterAccount": "@" + twitter_info
+        #     },
+        #     "twitterPeopleMentionedMost": {
+        #         "names":mention_name
+        #     },
+        #     "twitterPeopleMentioneTimes": {
+        #         "top_times":mention_counts
+        #     },
+        #     "twitterFirstPostYear": {
+        #         "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
+        #         "date": "Jun.29 2019",
+        #         "twitterAccount": "@" + twitter_info
+        #     },
+        #     "twitterLastPostYear": {
+        #         "content":"Thank you to everyone who helped us this TARC season. We sadly didn’t have good flights yesterday. However, we created our own record. We flew about 2000’ and 1000’ on another flight. Good luck to all the teams who qualify.",
+        #         "date": "Jun.29 2019",
+        #         "twitterAccount": "@" + twitter_info
+        #     },
+        #     "twitterHashtag": {
+        #         "hashtags":["#hashtag 1", "#hashtag 2", "#hashtag 3"],
+        #         "hashtagsCount": [5, 2, 1],
+        #         "hashtagMost": "#Sunset"
+        #     },
+        #     "insPostMostComments": {
+        #         "pictureLink": ["picture here"],
+        #         "comments": ["comment1", "comment2", "comment3", "comment4"],
+        #         "totalComments": 12
+        #     },
+        #     "insNinephotos": urls,
+        #     "facebookNumOfFriends": 423,
+        #     "facebookRecentAcademic": {
+        #         "schoolName":"Texas Academy of Mathematics and Technology",
+        #         "year":2019
+        #     }
+        # }
+
         return render_template("samplereport.html", data = data)
 
 if __name__ == '__main__':

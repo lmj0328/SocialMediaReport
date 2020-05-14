@@ -1135,16 +1135,23 @@
                     <p><span class="highlight">8760</span> hours, you published <span class="emphasize">{{data.numOfPost.total}} </span> posts across your social media platforms. <p>
                 </div>
                 <div>
-                    <p><span class="emphasize">{{data.numOfPost.twitter}}</span> from <span class="emphasize">Twitter,</span></p>
-                    <p><span class="emphasize">{{data.numOfPost.instagram}}</span> from <span class="emphasize">Instagram,</span><p>
-                    <p><span class="emphasize">{{data.numOfPost.facebook}}</span> from <span class="emphasize">Facebook.</span><p>
+                    {% if data.userInput.twitterInput != False %}
+                    <p><span class="emphasize">{{data.numOfPost.twitter}}</span> from <span class="emphasize">Twitter</span></p>
+                    {% endif %}
+                    <!-- {% if data.userInput.instagramInput != False %}
+                    <p><span class="emphasize">{{data.numOfPost.instagram}}</span> from <span class="emphasize">Instagram</span><p>
+                    {% endif %}
+                    {% if data.userInput.facebookInput != False %}
+                    <p><span class="emphasize">{{data.numOfPost.facebook}}</span> from <span class="emphasize">Facebook</span><p>
+                    {% endif %} -->
+
                 </div>
             </div>
             <!-- <div id="num-of-posts-viz"><canvas id="myChart"></canvas></div> -->
             <div id="num-of-posts-viz"><canvas id="myChart"><p id="twitter">{{data.numOfPost.twitter}}</p></canvas></div>
         </div>
 
-
+        {% if data.userInput.twitterInput != False %}
         <div class="section section-3 overall-color">
             <div class="year-label">2019 Wrapped<div class="year-label-rectangle"></div></div>
 
@@ -1154,13 +1161,18 @@
                 </div>
                 <div id="posting-patterns-viz"><canvas id="lineChart" width="1319" height="309"><p id="pattern">{{data.monthMostPost.monthPost}}</p></canvas></div>
                 <div>
-                    <p>In <span class="emphasize">{{data.monthMostPost.month}}</span>, you published the most posts, <span class="highlight">{{data.monthMostPost.total}}</span> in total with <span class="highlight">{{data.monthMostPost.facebook}}</span> from <span class="highlight">Facebook</span> and <span class="highlight">{{data.monthMostPost.twitter}}</span> from <span class="highlight">Twitter.</span></p>
+                    <p>In <span class="emphasize">{{data.monthMostPost.month}}</span>, you published the most posts, <span class="highlight">{{data.monthMostPost.total}}</span> in total with 
+                        {% if data.userInput.facebookInput != False %}
+                        <span class="highlight">{{data.monthMostPost.facebook}}</span> from <span class="highlight">Facebook</span> and 
+                        {% endif %}
+                        <span class="highlight">{{data.monthMostPost.twitter}}</span> from <span class="highlight">Twitter.</span></p>
                 </div>
                 <div>
                     <p>Did your mood change as the time went by?</p>
                 </div>
             </div>
         </div>
+        {% endif %}
 
         {% if data.userInput.facebookInput != False %}
         <div class="section section-4 facebook-color">
