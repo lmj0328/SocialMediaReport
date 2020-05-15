@@ -813,12 +813,12 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     z-index: 101;
     position: fixed;
     text-align: center;
-    padding-top: 37.5vh;
+    padding-top: 45vh;
 }
 
 .spinner-3-small {
-    height:25vh;
-    width:25vh;
+    height:10vh;
+    width:10vh;
     -webkit-animation: rotation 2s infinite linear;
     transform-origin: center;
     fill: #8B6CF3;

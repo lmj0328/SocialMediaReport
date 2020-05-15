@@ -34,7 +34,7 @@ def report():
     errorMessage = {
         "noUserInput": "Oops, you did not enter any username ...",
         "wrongTwitterInput": "Oops, the twitter account you enter either does not exist or has no content in it...",
-        "wrongInstagramInput": "Oops, the Instagram username you enter does not exist...",
+        "wrongInstagramInput": "Oops, the Instagram username you enter either does not exist or is set to private...",
         "emptyInstagramContent": "Oops, your instagram account currently has no content..",
     }
 
