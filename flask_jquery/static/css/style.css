@@ -807,3 +807,29 @@ div.borderXwidth a.scrolled:before, div.borderXwidth a.scrolled:after
     text-align: center;
 }
 
+#spinner {
+    height:100vh;
+    width:100vw;
+    z-index: 101;
+    position: fixed;
+    text-align: center;
+    padding-top: 37.5vh;
+}
+
+.spinner-3-small {
+    height:25vh;
+    width:25vh;
+    -webkit-animation: rotation 2s infinite linear;
+    transform-origin: center;
+    fill: #8B6CF3;
+}
+
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}

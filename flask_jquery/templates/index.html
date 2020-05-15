@@ -72,6 +72,22 @@
                 <!--Home-->
                 <div id="home-page">
                     <div id="backdrop" class="hidden" style="background: #000000d2;"></div>
+                    <div id="spinner" class="hidden" >
+                        <svg width="220px" height="220px" viewBox="0 0 200 200">
+                            <g class="spinner-3-small ">
+                                <circle class="st0" cx="100" cy="22.84" r="17.51"/>
+                                <circle class="st0" cx="45.09" cy="45.09" r="14.01"/>
+                                <circle class="st0" cx="22.84" cy="100" r="11.2"/>
+                                <circle class="st0" cx="45.09" cy="154.91" r="8.96"/>
+                                <circle class="st0" cx="100" cy="177.16" r="7.69"/>
+                                <circle class="st1" cx="154.91" cy="154.91" r="7.16"/>
+                                <circle class="st2" cx="177.16" cy="100" r="5.42"/>
+                                <circle class="st3" cx="154.91" cy="45.09" r="6"/>
+                            </g>
+    
+                        </svg>
+                    </div>
+            
                     <div id="user-input-form" style="display:hide;" class="hidden">
                         <div id="cross-btn" class="cross">
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,7 +95,7 @@
                                 <path d="M4.5 4.5L13.5 13.5" stroke="#626262" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <form action="{{ url_for('report') }}" class="user-input" method="post" role="form" enctype="application/json">
+                        <form action="{{ url_for('report') }}" class="user-input" method="post" role="form" enctype="application/json" onsubmit="loading()">
                             <div>
                                 <svg width="27" height="27" viewBox="0 0 27 27" fill="none">
                                     <path d="M13.5 2.25C10.3984 2.25 7.875 4.77338 7.875 7.875C7.875 10.9766 10.3984 13.5 13.5 13.5C16.6016 13.5 19.125 10.9766 19.125 7.875C19.125 4.77338 16.6016 2.25 13.5 2.25ZM13.5 11.25C11.6392 11.25 10.125 9.73575 10.125 7.875C10.125 6.01425 11.6392 4.5 13.5 4.5C15.3608 4.5 16.875 6.01425 16.875 7.875C16.875 9.73575 15.3608 11.25 13.5 11.25ZM23.625 23.625V22.5C23.625 18.1586 20.0914 14.625 15.75 14.625H11.25C6.9075 14.625 3.375 18.1586 3.375 22.5V23.625H5.625V22.5C5.625 19.3984 8.14838 16.875 11.25 16.875H15.75C18.8516 16.875 21.375 19.3984 21.375 22.5V23.625H23.625Z" fill="#5739D2"/>
@@ -97,31 +113,33 @@
                                     </clipPath>
                                     </defs>
                                 </svg> 
-                                <input type="text" id="twitter-input" name="twitter-input" minlength="0" maxlength="20" size="20" placeholder="Twitter account (e.g. TSwiftFTC)">
+                                <input type="text" id="twitter-input" name="twitter-input" minlength="0" maxlength="20" size="20" placeholder="Twitter account (optional)">
                             </div>
-                            <div>
-                                <svg width="27" height="27" viewBox="0 0 27 27" fill="none">
-                                    <rect x="1" y="1" width="25" height="25" rx="4" stroke="#5739D2" stroke-width="2"/>
-                                    <path d="M18.3493 4.82155L15.4564 4.82924C14.1777 4.83263 12.9506 5.31737 12.0451 6.1768C11.1396 7.03624 10.6298 8.19998 10.628 9.412L10.6238 12.154L7.73094 12.1617L7.72538 15.8176L10.6183 15.8099L10.6071 23.1219L14.4643 23.1116L14.4754 15.7997L17.3683 15.792L18.3382 12.1335L14.481 12.1437L14.4852 9.40176C14.4855 9.15935 14.5875 8.9266 14.7686 8.75472C14.9497 8.58283 15.1951 8.48588 15.4509 8.4852L18.3437 8.47752L18.3493 4.82155Z" stroke="#5739D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <input type="text" id="facebook-input" name="facebook-input" minlength="0" maxlength="20" size="20" placeholder="Facebook account (e.g. TaylorSwift)"">
-                            </div>
+                            
                             <div>
                                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                                     <path d="M19.8334 2.33337H8.16671C4.94505 2.33337 2.33337 4.94505 2.33337 8.16671V19.8334C2.33337 23.055 4.94505 25.6667 8.16671 25.6667H19.8334C23.055 25.6667 25.6667 23.055 25.6667 19.8334V8.16671C25.6667 4.94505 23.055 2.33337 19.8334 2.33337Z" stroke="#5739D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M18.6667 13.265C18.8106 14.2359 18.6448 15.2276 18.1927 16.0988C17.7406 16.9701 17.0253 17.6766 16.1485 18.1179C15.2718 18.5592 14.2782 18.7128 13.3091 18.5569C12.34 18.401 11.4447 17.9434 10.7506 17.2493C10.0566 16.5553 9.599 15.66 9.44306 14.6909C9.28712 13.7218 9.44073 12.7282 9.88203 11.8514C10.3233 10.9746 11.0299 10.2593 11.9011 9.80727C12.7724 9.35518 13.764 9.18934 14.735 9.33332C15.7254 9.48018 16.6423 9.94169 17.3503 10.6497C18.0583 11.3577 18.5198 12.2746 18.6667 13.265Z" stroke="#5739D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M20.4166 7.58337H20.4279" stroke="#5739D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                                <input type="text" id="instagram-input" name="instagram-input" minlength="0" maxlength="20" size="20" placeholder="Instagram account (e.g. taylorswift)">
+                                <input type="text" id="instagram-input" name="instagram-input" minlength="0" maxlength="20" size="20" placeholder="Instagram account (optional)">
                             </div>
-                            <button type="submit" id="get-report">
-                                <!-- <a href="report/samplereport.html"> -->
-                                    Get your report
-                                <!-- </a> -->
-                            </button>
-                        </form>
-                        <p id="response"></p>
+                            <div>
+                                <svg width="27" height="27" viewBox="0 0 27 27" fill="none">
+                                    <rect x="1" y="1" width="25" height="25" rx="4" stroke="#5739D2" stroke-width="2"/>
+                                    <path d="M18.3493 4.82155L15.4564 4.82924C14.1777 4.83263 12.9506 5.31737 12.0451 6.1768C11.1396 7.03624 10.6298 8.19998 10.628 9.412L10.6238 12.154L7.73094 12.1617L7.72538 15.8176L10.6183 15.8099L10.6071 23.1219L14.4643 23.1116L14.4754 15.7997L17.3683 15.792L18.3382 12.1335L14.481 12.1437L14.4852 9.40176C14.4855 9.15935 14.5875 8.9266 14.7686 8.75472C14.9497 8.58283 15.1951 8.48588 15.4509 8.4852L18.3437 8.47752L18.3493 4.82155Z" stroke="#5739D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <input type="text" id="facebook-input" name="facebook-input" minlength="0" maxlength="20" size="20" placeholder="Facebook account (optional)">
+                            </div>
 
+                            <!-- <button type="submit" id="get-report" ng-disabled="loading" onclick="loading()"> -->
+
+                            <button type="submit" id="get-report" ng-disabled="loading" >
+
+                                Get your report
+                            </button>
+
+                        </form>
                     </div>
 
 
@@ -371,7 +389,7 @@
                                 <div class="dot-label">2</div>
                             </div>
                             <h3>To explore your usage</h3>
-                            <p>Social media seeminglessly blend into our life where we use it just like natural breathing. Do you want to know how often do you breathe? </p>
+                            <p>Social media blends into our life imperceptibly. Do you want to know how often do you breathe? </p>
                         </div>
                         <div class="reason">
                             <div class="reason-label">
@@ -797,40 +815,9 @@
     <!--Script - Flask-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
 
-
-
-
     <!--my own javascript-->
     <script src="../static/js/index.js"></script>
-
-
 </html>
-
-<!--
-
-
-<body>
-    <script type=text/javascript>
-        $(document).ready(function() {
-            $('form').on('submit', function(event) {
-                $.ajax({
-                    url: '/table_data',
-                    data: $('form').serializeArray(),
-                    type: 'POST',
-                    success: function(response) {
-                        $('#response').text(JSON.stringify(response));
-                    }
-                })
-            });
-        });
-    </script>
-    
-    
-</body>
-
-
--->
-
 
 
 
