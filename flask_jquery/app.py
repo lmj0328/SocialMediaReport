@@ -117,19 +117,26 @@ def report():
         # The latest post
         tweets_df['hour'] = tweets_df.date.dt.hour
         pos = tweets_df.hour.sub(3).abs().values.argmin()
-        df1 = tweets_df.iloc[[20]]
+        df1 = tweets_df.iloc[[pos]]
         latest_text = df1.tweet_text.values[0]
         latest_date = df1.date.values[0]
         latest_date = pd.to_datetime(str(latest_date))
         latest_date = latest_date.strftime('%Y.%m.%d')
-        latest_hour = (str(df1.hour.values[0]), ':00')
-        latest_hour = "".join(latest_hour)
-        data["twitterLatestPost"] = {
-            "content":latest_text,
-            "date":latest_date,
-            "time":latest_hour,
-            "twitterAccount": "@" + twitter_info
-        }
+        if df1.hour.values[0] < 5 or df1.hour.values[0] > 20:
+            latest_hour = (str(df1.hour.values[0]), ':00')
+            latest_hour = "".join(latest_hour)
+            data["twitterLatestPost"] = {
+                "latePost": bool(True),
+                "content":latest_text,
+                "date":latest_date,
+                "time":latest_hour,
+                "twitterAccount": "@" + twitter_info
+            }
+        else:
+            data["twitterLatestPost"] = {
+                "latePost": bool(False)
+            }
+
 
         #Mention Most
         tweets_df['mentions'].replace('', np.nan, inplace=True)
@@ -179,13 +186,20 @@ def report():
         hash_set.sort_values(by=['counts'], inplace=True, ascending=False)
         hash_name = hash_set.hashtags.tolist()
         hash_counts = hash_set.counts.tolist()
-        hash_most = hash_name[0]
-        hash_most
-        data["twitterHashtag"] = {
-            "hashtags":hash_name,
-            "hashtagsCount": hash_counts,
-            "hashtagMost": hash_most
-        }
+        if len(hash_name) == 0: 
+            data["twitterHashtag"] = {
+                "hashtag": bool(False)
+            }
+        else:
+            hash_most = hash_name[0]
+            hash_most
+            data["twitterHashtag"] = {
+                "hashtag": bool(True),
+                "hashtags":hash_name,
+                "hashtagsCount": hash_counts,
+                "hashtagMost": hash_most
+            }
+
 
     else: 
         twitter_info = bool(False)
