@@ -222,9 +222,9 @@
     }
 
     div.text p span.small{
-            font-weight: normal;
-            font-size: 1rem;
-            line-height: 45px;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 28px;
     }
 
     div.text p span.emphasize {
@@ -441,7 +441,7 @@
 
     .section-5 div.text div:nth-of-type(3) {
         position: absolute;
-        width: 45.28vw;
+        width: 65vw;
         height: 23.22vh;
         top: 46.11vh;
         left: 5.83vw;
@@ -457,7 +457,7 @@
     .section-5 div.text div:nth-of-type(4) {
         position: absolute;
         bottom: 25vh;
-        left: 58.194vw;
+        left: 56vw;
         width: 45.28vw;
     }
 
@@ -511,7 +511,7 @@
 
     .section-6 div.text div:nth-of-type(3) {
         position: absolute;
-        width: 45.28vw;
+        width: 65vw;
         height: 23.22vh;
         top: 38.11vh;
         left: 5.83vw;
@@ -527,7 +527,7 @@
     .section-6 div.text div:nth-of-type(4) {
         position: absolute;
         bottom: 25vh;
-        left: 58.194vw;
+        left: 56vw;
         width: 45.28vw;
     }
 
@@ -720,8 +720,8 @@
         bottom: 3.33vh;
     }
 
-        /** Section 11 **/
-        .section-11 div.text {
+    /** Section 11 **/
+    .section-11 div.text {
         padding-top: 16.22vh;
         margin-bottom: 8.33vh;
         margin-top:0vh;
@@ -739,7 +739,8 @@
 
     .section-11 div.text div:nth-of-type(3) {
         position: absolute;
-        top: 32vh;
+        width: 55vw;
+        top: 30vh;
         left: 5.83vw;
     }
 
@@ -752,7 +753,7 @@
     .section-11 div.text div:nth-of-type(5) {
         position: absolute;
         top: 35.78vh;
-        left: 62vw;
+        left: 65vw;
     }
 
     .section-11 div.text div:nth-of-type(6) {
@@ -769,7 +770,8 @@
 
     .section-11 div.text div:nth-of-type(8) {
         position: absolute;
-        top: 61vh;
+        width: 68vw;
+        top: 59vh;
         left: 29vw;
     }
 
@@ -829,7 +831,7 @@
 
     .section-12 div.text div:nth-of-type(3) {
         position: absolute;
-        left: 63.26vw;
+        left: 60vw;
         top: 52.11vh;
         width: 50%;
     }
@@ -841,8 +843,9 @@
         font-size: 3.5rem;
         line-height: 63px;
         position: absolute;
-        left: 63.26vw;
+        left: 60vw;
         top: 63.78vh;
+        width: 10vw;
         color: #FEFC8A;
     }
 
@@ -866,7 +869,7 @@
         width: 43.19vw;
         height: 37vh;
         background-color: white;
-        left: 13.68vw;
+        left: 3.5vw;
         top: 31.11vh;
     }
 
@@ -1120,7 +1123,7 @@
             <div class="text">
                 <h1>Welcome {{data.userInput.name}}</h1>
                 <h2>Your journey starts here...</h2>
-                <p>{{data.userInput.twitterInput}} {{data.userInput.facebookInput}} {{data.userInput.instagramInput}}</p>
+                <!-- <p>{{data.userInput.twitterInput}} {{data.userInput.facebookInput}} {{data.userInput.instagramInput}}</p> -->
             </div>
             
         </div>
@@ -1960,8 +1963,9 @@
                         <div>
                             <p>The hashtag that you used most frequently was</p> 
                         </div>
-                        <div id="wordcloud"></div>
+                        <div id="wordcloud" class="wordcloud"></div>
                     </div>
+                    <p id="hashtag" style="display: none">{{data.twitterHashtag.hashtags}}</p><p id="hashtag_count" style="display: none">{{data.twitterHashtag.hashtagsCount}}</p>
                     <div>
                         <p class="hashtag">{{data.twitterHashtag.hashtagMost}}</p> 
                     </div>
@@ -2095,13 +2099,41 @@
         chart.draw();
     });
 
+    // draw hashtag word cloud
+    let hashtag_data = document.getElementById("hashtag").innerHTML;
+    let hashtag_count_data = document.getElementById("hashtag_count").innerHTML;
+    let hashtag = hashtag_data.slice(1, -1).split(', ').map(d => d.slice(1, -1));
+    let hashtag_count = hashtag_count_data.slice(1, -1).split(', ').map(d => +d);
+    var hashtag_dic = [];
+    var len = hashtag.length;
+    for (var i = 0; i < len; i++) {
+        hashtag_dic.push({
+            "x": hashtag[i],
+            "value": hashtag_count[i],
+            category: hashtag_count[i].toString() + " time"
+        });
+    }
+    console.log(hashtag_dic);
+    anychart.onDocumentReady(function() {
+        var chart = anychart.tagCloud(hashtag_dic);
+        chart.angles([0])
+        chart.colorRange(true);
+        chart.colorRange().length('80%');
+        var colorRange = chart.colorRange();
+        colorRange.labels(true);
+        // chart.angles([0, -45, 90])
+        chart.container("wordcloud");
+        var tooltip = chart.tooltip();
+        // tooltip.enabled(false);
+        chart.draw();
+    });
+
+
     // draw mention times
     let mention_name_data = document.getElementById("mention_name").innerHTML;
     let mention_time_data = document.getElementById("mention_count").innerHTML;
     let mention_name = mention_name_data.slice(1, -1).split(', ').map(d => d.slice(1, -1));
     let mention_time = mention_time_data.slice(1, -1).split(', ').map(d => +d);
-    console.log(mention_name);
-    console.log(mention_time);
     let myChart3 = document.getElementById('tagChart');
         let tagChart = new Chart(myChart3, {
             type: 'horizontalBar',
