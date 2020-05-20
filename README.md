@@ -13,12 +13,10 @@ This tutorial will guide you to do the initial set-up on your own computer enabl
 
 -------
 ##### a) Click the green 'Clone' button on the top-right of this github page
-![](img_read/clone_button.png){width=300px}  
-
+<img src="img_read/clone_button.png" width="300">
 
 ##### b) Copy the git address using the button besides the link
-![](img_read/clone_link.png){width=300px}
-
+<img src="img_read/clone_link.png" width="300">
 
 ##### c) Open the Terminal on your machine
 
@@ -77,8 +75,7 @@ $ python app.py
 ```
 
 ##### d) This is what will look like after you run the code above, copy the address showing below and paste it in your browser, you can start to play with our project!
-![](img_read/run.png){width=700px}
-
+<img src="img_read/run.png" width="700">
 
 
 ## Reference
