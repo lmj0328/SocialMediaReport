@@ -79,6 +79,10 @@ function renderMainPage() {
     //     $('html').addClass('disable-scroll');
     // });
 
+    $('#banner-cross').click(function() {
+        $('#banner').addClass('hidden');
+    });
+
 
     $('#cross-btn').click(function() {
         $('#backdrop').addClass('hidden');

@@ -31,7 +31,57 @@
         <div id="landing-page">
             <!--Navigation Bar-->
             <section id="navigation-bar">
-                <nav class="navbar fixed-top navbar-expand-sm navbar-light">
+                <div id="banner">
+                    <div>Mirror has been transitioned to open source on 05/22/2020. Check out <a href="https://github.com/lmj0328/SocialMediaReport">here</a>.</div>
+                    <div id="banner-cross" class="cross">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 4.5L4.5 13.5" stroke="#626262" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4.5 4.5L13.5 13.5" stroke="#626262" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <style>
+                    #banner {
+                        width:100%;
+                        height:40px;
+                        background-color: #FF8B38;
+                    }
+    
+                    #banner div {
+                        margin-bottom:0;
+                        padding-top: 11px;
+                    }
+    
+
+                    #banner div:nth-of-type(1) {
+                        text-align: center;                    
+                        font-family: Nunito;
+                        font-weight: normal;
+                        font-size: 15px;
+                        line-height: 19px;
+                        width: 100%;
+                    }
+
+                    #banner a {
+                        text-decoration: underline;
+                        text-align: center;                    
+                        font-family: Nunito;
+                        font-weight: normal;
+                        font-size: 15px;
+                    }
+    
+                    #banner-cross {
+                        position: fixed;
+                        right: 16px;
+                        top:0px;
+                    }
+
+                    #banner-cross path {
+                        stroke: rgba(0, 0, 0, 0.685);
+
+                    }
+                </style>
+                <nav class="navbar navbar-expand-sm navbar-light">
                     <a class="navbar-brand" href="#"><span>Mirror.</span></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,6 +119,8 @@
                     </div> -->
                 </nav>
             </section>
+
+
 
             <!--Home-->
             <div id="home-page">
@@ -123,7 +175,7 @@
                     </form>
                 </div>
 
-
+               
                 <section class="home-section home-full-height bg-dark bg-gradient" id="home-screen" 
                          style="background: linear-gradient(75.62deg, #3739B6 6%, #8D42F4 81.86%, #BD6FF6 99.97%);">
                     <div class="title-caption">
