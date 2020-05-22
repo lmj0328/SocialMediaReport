@@ -197,6 +197,25 @@ $(document).ready(function () {
 <p>Here is the link to our <a href="https://lmj0328.github.io/SocialMediaReport/">Project</a></p>
 <p>According to our research, people are spending an increasing amount of hours daily on a wide range of social media [1, 2]. As people post interesting facts about themselves and view contents about others, their self-presentation and identity are gradually changed by the affordances without their noticing [3, 4]. This lack of self-awareness is detrimental to people as it not only causes anxiety and confusion but also triggers mental health problems. However, the problem has not been addressed or even paid attention to, but worsened by the contradiction between business expansion and peer pressure. As a result, a considerable number of people have inaccurate self-cognition and neglect self-reflection.</p>
 <p>We would like to mainly focus on people’s confusion and interest about their online identity. We want to help them regain accurate self-cognition and evaluate the difference or misunderstanding between the actual impression and the identification they believed about themselves on their social media platforms by conducting data analysis and data visualization.</p>
+
+<!-- closeout/tech -->
+<div id="closeout" class="section level2">
+<h2>Closeout/handoff plan</h2>
+<ul>
+  <li>Step 1: Notify interviewers and survey respondents that our project is being transitioned to open source; with a date that the transition will be effective.</li>
+  <li>Step 2: Post a notice on our landing page about the project being transitioned to open source; with a date that the transition will be effective.</li>
+  <li>Step 3: Notify any users we collected data from that their data will be deleted; with a date the data deletion will be completed by. Delete all collected data.</li>
+  <li>Step 4: Convert the code repository to a public repository.</li>
+  <li>Step 5: Add a README document in the public repository with instructions on how to build, continue working on the project.</li>
+  </ul>
+</div>
+
+<div id="TechDoc" class="section level2">
+  <h2>Closeout/handoff plan</h2>
+  <p>We used the micro web framework Flask which was written in Python to build up our backend server. It supported us to build the connection between our client-side development and server-side development by allowing sending data back and forth. To keep the consistency of our Python backend, we planned to scrape users’ social media posts from different platforms by using third-party python APIs or write scrapper code by ourselves in python language. We used the python library called <a href="https://pypi.org/project/GetOldTweets3/">GetOldTweets3</a> to scrape all twitter data and wrote instagram scraping process on our own. While there is no need to construct a real-time database to support the functionality of our product, we saved the data each time into variables and passed them into the data wrangling code. We used pandas library in Python to process the data and summarize the results which would be shown on the final report. In terms of frontend implementation, we used jquery in Javascript to receive data from our backend and generate the interactive report. Last but not the least, we drew data visualization by using libraries <a href="https://www.chartjs.org/">Chart.js</a> and <a href="https://www.anychart.com/">AnyChart</a>.</p>
+ </div>
+
+<!-- guideline -->
 <div id="inital-set-up-guideline" class="section level2">
 <h2>Inital Set-up Guideline</h2>
 <p>This tutorial will guide you to do the initial set-up on your own computer enabling this project runs on your local machine. Once you have doen this tutorial, you are free to explore this project and see what impact you can bring to this project. This tutorial is applicable for Mac machine for current stage, we will add the guideline for Windows and Linux in the future.</p>
