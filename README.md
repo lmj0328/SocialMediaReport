@@ -6,7 +6,79 @@ According to our research, people are spending an increasing amount of hours dai
 
 We would like to mainly focus on people’s confusion and interest about their online identity. We want to help them regain accurate self-cognition and evaluate the difference or misunderstanding between the actual impression and the identification they believed about themselves on their social media platforms by conducting data analysis and data visualization.
 
-Reference
+## Inital Set-up Guideline
+This tutorial will guide you to do the initial set-up on your own computer enabling this project runs on your local machine. Once you have doen this tutorial, you are free to explore this project and see what impact you can bring to this project. This tutorial is applicable for Mac machine for current stage, we will add the guideline for Windows and Linux in the future.
+
+### 1. Clone the repo
+
+-------
+##### a) Click the green 'Clone' button on the top-right of this github page
+<img src="img_read/clone_button.png" width="300">
+
+##### b) Copy the git address using the button besides the link
+<img src="img_read/clone_link.png" width="300">
+
+##### c) Open the Terminal on your machine
+
+
+##### d) Use cd ... to direct to the folder you want to place this project in 
+```bash
+$ cd Desktop/
+```
+
+##### e) Then, you can clone this project on your local machine by using the link you copied previously
+```bash
+$ git clone https://github.com/lmj0328/SocialMediaReport.git
+```
+
+*Now, you successfully store the project on your local machine!!*
+
+### 2. Install python3 on your machine
+
+-------
+##### a) First, you can check if you have python 3 on your machine by running flowing code on Terminal. If yes, you can skip this part
+```bash
+$ python --version
+```
+
+##### b) If you do not have python installed on your machine, don't worry! I recommend you to install Aconda enviroment on your local machine with python 3 in it. With Aconda, you can install and access the popular packages in python more easily. Fllow the instructions [here](https://docs.continuum.io/anaconda/install/). 
+
+### 3. Install required packages in this project
+
+-------
+##### a) First, let's install the getoldtweet3 package in python which can help us to scrape the data on Twitter
+```bash
+$ pip install GetOldTweets3
+```
+
+##### b) Then, let's install the flask package which help us to host our website locally on the machine and have interaction with it
+
+```bash
+$ pip install Flask
+```
+*Now, you have all the required packages in your machine to run this project!*
+
+### 4. Run the project
+
+-------
+##### a) Open the terminal, let's go to the root of our cloned folder
+```bash
+$ cd Desktop/SocialMediaReport/
+```
+##### b) Then, we use cd.. agian to go to the folder which stores our python code
+```bash
+$ cd flask_jquery/
+```
+##### c) Now we can start to run the project by inputting code below
+```bash
+$ python app.py
+```
+
+##### d) This is what will look like after you run the code above, copy the address showing below and paste it in your browser, you can start to play with our project!
+<img src="img_read/run.png" width="700">
+
+
+## Reference
 
 [1] Demographics of Social Media Users and Adoption in the United States. (n.d.). Retrieved from https://www.pewresearch.org/internet/fact-sheet/social-media/
 
