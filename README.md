@@ -1,6 +1,6 @@
 # SocialMediaReport
 
-Here is the link to our [Project](https://lmj0328.github.io/SocialMediaReport/)
+Here is the link to our [Landing Page](https://lmj0328.github.io/SocialMediaReport/)
 
 According to our research, people are spending an increasing amount of hours daily on a wide range of social media [1, 2]. As people post interesting facts about themselves and view contents about others, their self-presentation and identity are gradually changed by the affordances without their noticing [3, 4]. This lack of self-awareness is detrimental to people as it not only causes anxiety and confusion but also triggers mental health problems. However, the problem has not been addressed or even paid attention to, but worsened by the contradiction between business expansion and peer pressure. As a result, a considerable number of people have  inaccurate self-cognition and neglect self-reflection. 
 
