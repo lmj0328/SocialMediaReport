@@ -81,6 +81,7 @@ function renderMainPage() {
 
     $('#banner-cross').click(function() {
         $('#banner').addClass('hidden');
+        $('nav.banner').removeClass('banner');
     });
 
 
