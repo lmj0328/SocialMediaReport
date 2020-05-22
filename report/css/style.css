@@ -1,0 +1,241 @@
+body{
+    color:#222;
+    -webkit-text-size-adjust:none;
+}
+
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl, dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td,iframe{
+    margin:0; 
+    padding:0;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-size:100%;
+}
+
+body,button,input,select,textarea {
+    font-family:Tahoma,Arial,Roboto,��Droid Sans��,��Helvetica Neue��,��Droid Sans Fallback��,��Heiti SC��,sans-self;
+    font-size:62.5%; 
+    line-height:1.5;
+}
+
+ol,ul{
+    list-style:none;
+}
+
+html,body{ 
+    width:100%; 
+    height:100%; 
+    overflow:hidden;
+    background-color: black;
+}
+
+.section-wrap{ 
+    width:100%;
+    height:100%;
+    overflow:visible;
+    transition:transform 1s cubic-bezier(0.86,0,0.03,1);
+    -webkit-transition:-webkit-transform 1s cubic-bezier(0.86,0,0.03,1);
+}
+
+.section-wrap .section{ 
+    position:relative; 
+    width:100%; 
+    height:100%; 
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size: auto 100%;
+    /* background-attachment: fixed; */
+    /* background-size: cover; */
+}
+
+.section-wrap .section .title{
+    width:100%;
+    position:absolute;
+    top:10%;
+    color:#fff;
+    font-size:2.4em;
+    text-align:center;
+}
+
+.section-wrap .section .title p{ 
+    padding:0 4%;
+    opacity:0
+}
+
+.section-wrap .section .title.active .tit{ 
+    opacity:1;transform:translateY(-25px);
+    -webkit-transform:translateY(-25px);
+    transition:all 2s cubic-bezier(0.86,0,0.8,1);
+    -webkit-transition:all 2s cubic-bezier(0.86,0,0.8,1);
+}
+
+.section-wrap .section-1{ 
+    /* background-color:#337ab7; */
+    background-image: url("../img/Welcome.png");
+}
+
+.section-wrap .section-2{ 
+    background-image: url("../img/Report - total num of report.png");
+}
+
+.section-wrap .section-3{ 
+    background-image: url("../img/Report - post frequency.png");
+}
+
+.section-wrap .section-4{ 
+    background-image: url("../img/Report - num of friends till last year.png");
+}
+
+.section-wrap .section-5{ 
+    background-image: url("../img/Report - num of likes.png");
+}
+
+.section-wrap .section-6{ 
+    background-image: url("../img/Report - post late night.png");
+}
+
+.section-wrap .section-7{ 
+    background-image: url("../img/Report - ins max comments.png");
+}
+
+.section-wrap .section-8{ 
+    background-image: url("../img/Report - max @.png");
+}
+
+.section-wrap .section-9{ 
+    background-image: url("../img/Report - fb relationship.png");
+}
+
+.section-wrap .section-10{ 
+    background-image: url("../img/Report - fb life event.png");
+}
+
+.section-wrap .section-11{ 
+    background-image: url("../img/Report - best 9.png");
+}
+
+
+.put-section-0{ 
+    transform:translateY(0);
+    -webkit-transform:translateY(0);
+}
+
+.put-section-1{ 
+    transform:translateY(-100%);
+    -webkit-transform:translateY(-100%);
+}
+
+.put-section-2{ 
+    transform:translateY(-200%);
+    -webkit-transform:translateY(-200%);
+}
+
+.put-section-3{ 
+    transform:translateY(-300%);
+    -webkit-transform:translateY(-300%);
+}
+
+.put-section-4{ 
+    transform:translateY(-400%);
+    -webkit-transform:translateY(-400%);
+}
+
+.put-section-5{ 
+    transform:translateY(-500%);
+    -webkit-transform:translateY(-500%);
+}
+
+.put-section-6{ 
+    transform:translateY(-600%);
+    -webkit-transform:translateY(-600%);
+}
+
+.put-section-7{ 
+    transform:translateY(-700%);
+    -webkit-transform:translateY(-700%);
+}
+
+.put-section-8{ 
+    transform:translateY(-800%);
+    -webkit-transform:translateY(-800%);
+}
+
+.put-section-9{ 
+    transform:translateY(-900%);
+    -webkit-transform:translateY(-900%);
+}
+
+.put-section-10{ 
+    transform:translateY(-1000%);
+    -webkit-transform:translateY(-1000%);
+}
+
+.put-section-11{ 
+    transform:translateY(-1100%);
+    -webkit-transform:translateY(-1100%);
+}
+
+.section-btn{ 
+    width:14px;
+    position:fixed;
+    right:2%;
+    top:35%;
+}
+
+.section-btn li{ 
+    width:14px;
+    height:14px;
+    cursor:pointer;
+    text-indent:-9999px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    margin-bottom:12px; 
+    background:#8A42F2;
+    text-align:center; 
+    color:#fff; 
+    onsor:pointer;
+}
+
+.section-btn li.on{ 
+    background:#FF8B38;
+}
+
+.arrow{ 
+    opacity:1;
+    animation:arrow 3s cubic-bezier(0.5,0,0.1,1) infinite;
+    -webkit-animation:arrow 3s cubic-bezier(0.5,0,0.1,1) infinite;
+    transform:rotate(-90deg);
+    -webkit-transform:rotate(-90deg); 
+    position:absolute;
+    bottom:10px;
+    left:50%;
+    margin-left:-30px;
+    width:60px;
+    height:60px;
+    border-radius:100%;
+    -webkit-border-radius:100%;
+    line-height:60px;
+    text-align:center;
+    font-size:20px;
+    color:#fff;
+    border:1px solid #fff;
+    cursor:pointer;
+    overflow:hidden;
+}
+
+.arrow:hover{ 
+    animation-play-state:paused;
+    -webkit-animation-play-state:paused;
+}
+
+@keyframes arrow{ 
+    %0,
+    %100{bottom:10px; opacity:1;} 
+    50%{bottom:50px; opacity:.5} 
+}
+
+@-webkit-keyframes arrow{ 
+    %0,
+    %100{bottom:10px; opacity:1;} 
+    50%{bottom:50px; opacity:.5} 
+}
