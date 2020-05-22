@@ -73,11 +73,11 @@ function renderMainPage() {
         checkifInView();
     });
 
-    $('#explore-project').click(function() {
-        $('#backdrop').removeClass('hidden');
-        $('#user-input-form').removeClass('hidden');
-        $('html').addClass('disable-scroll');
-    });
+    // $('#explore-project').click(function() {
+    //     $('#backdrop').removeClass('hidden');
+    //     $('#user-input-form').removeClass('hidden');
+    //     $('html').addClass('disable-scroll');
+    // });
 
 
     $('#cross-btn').click(function() {
